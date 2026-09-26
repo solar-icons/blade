@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "description": "Generation-only dependency: provides the Solar Icons SVG source via @solar-icons/static. Not shipped (see .gitattributes).",
+  "devDependencies": {
+    "@solar-icons/static": "^2.3.2"
+  }
+}

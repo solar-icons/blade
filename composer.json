@@ -1,0 +1,48 @@
+{
+    "name": "solar-icons/blade",
+    "description": "A package to easily make use of Solar Icons in your Laravel Blade views.",
+    "keywords": ["Blade", "Blade Icons", "Laravel", "Solar", "Solar Icons", "SVG"],
+    "homepage": "https://github.com/solar-icons/blade",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Saoudi Hakim",
+            "email": "saoudihakim@gmail.com",
+            "homepage": "https://hakimsaoudi.dev"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "blade-ui-kit/blade-icons": "^1.6",
+        "illuminate/support": "^9.0|^10.0|^11.0|^12.0|^13.0"
+    },
+    "require-dev": {
+        "ext-dom": "*",
+        "ext-fileinfo": "*",
+        "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0|^11.0",
+        "phpunit/phpunit": "^9.0|^10.5|^11.0|^12.0",
+        "spatie/phpunit-snapshot-assertions": "^4.2.14|^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SolarIcons\\Blade\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SolarIcons\\Blade\\BladeServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
