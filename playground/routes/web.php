@@ -30,22 +30,39 @@ Route::get('/solar', function (Request $request) {
     $svgDir = base_path('vendor/solar-icons/blade/resources/svg');
     $icons = [];
 
-    foreach (glob($svgDir.'/'.$style.'-*.svg') ?: [] as $path) {
-        $icon = substr(basename($path, '.svg'), strlen($style) + 1);
+    // Match longest style prefixes first: a "bold-*.svg" glob would also
+    // catch "bold-duotone-*" files.
+    $ordered = ['bold-duotone', 'line-duotone', 'linear', 'bold', 'broken', 'outline'];
 
-        if ($search === '' || str_contains($icon, strtolower($search))) {
-            $icons[] = $icon;
+    foreach (glob($svgDir.'/*.svg') ?: [] as $path) {
+        $file = basename($path, '.svg');
+
+        foreach ($ordered as $prefix) {
+            if (str_starts_with($file, $prefix.'-')) {
+                if ($prefix === $style) {
+                    $icon = substr($file, strlen($prefix) + 1);
+
+                    if ($search === '' || str_contains($icon, strtolower($search))) {
+                        $icons[] = $icon;
+                    }
+                }
+                break;
+            }
         }
     }
 
     sort($icons);
     $total = count($icons);
-    $icons = array_slice($icons, 0, 240);
+    $perPage = 240;
+    $pages = max(1, (int) ceil($total / $perPage));
+    $page = min($pages, max(1, (int) $request->query('page', 1)));
+    $icons = array_slice($icons, ($page - 1) * $perPage, $perPage);
 
     $styleAttr = "color: {$color}; --solar-secondary-color: {$secondary}; --solar-secondary-opacity: {$opacity}";
 
     return view('solar', compact(
         'style', 'search', 'size', 'color', 'stroke',
-        'secondary', 'opacity', 'icons', 'total', 'styleAttr'
+        'secondary', 'opacity', 'icons', 'total', 'styleAttr',
+        'page', 'pages'
     ));
 });

@@ -18,6 +18,8 @@
         input[type="color"] { padding: 2px; width: 56px; height: 34px; }
         button { font: inherit; padding: 8px 16px; border-radius: 8px; border: 0; background: #2563eb; color: #fff; cursor: pointer; }
         .stats { font-size: 13px; color: #64748b; margin: 12px 2px; }
+        .pager { display: flex; gap: 8px; margin: 0 2px 12px; font-size: 13px; }
+        .pager a { color: #2563eb; }
         .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)); gap: 12px; }
         .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px 8px 10px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
         @media (prefers-color-scheme: dark) { .card { background: #1e293b; border-color: #334155; } }
@@ -65,7 +67,19 @@
         <code>&lt;x-solar-icon name="heart" weight="{{ $style }}" … /&gt;</code>
     </div>
 
-    <p class="stats">Showing {{ count($icons) }} of {{ $total }} icons ({{ $style }}) — capped at 240, refine the search to see more.</p>
+    <p class="stats">Showing {{ count($icons) }} of {{ $total }} icons ({{ $style }}) — page {{ $page }} of {{ $pages }}.</p>
+
+    @if ($pages > 1)
+        <p class="pager">
+            @for ($p = 1; $p <= $pages; $p++)
+                @if ($p === $page)
+                    <strong>{{ $p }}</strong>
+                @else
+                    <a href="/solar?{{ http_build_query(array_merge(request()->query(), ['page' => $p])) }}">{{ $p }}</a>
+                @endif
+            @endfor
+        </p>
+    @endif
 
     <div class="grid">
         @foreach ($icons as $icon)
