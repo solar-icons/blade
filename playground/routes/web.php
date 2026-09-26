@@ -72,24 +72,24 @@ Route::get('/solar/challenge', function () {
 
     $scenarios = [
         [
-            'title' => 'Baseline — no attributes',
-            'expected' => 'solar + solar-heart-linear effective, stroke 1.5, currentColor inherits.',
-            'html' => $factory->svg('solar-linear-heart')->toHtml(),
+            'title' => 'Baseline — no styling attributes',
+            'expected' => 'solar + solar-heart-linear effective, stroke 1.5, currentColor inherits. (Fixed 48px via attributes for display only.)',
+            'html' => $factory->svg('solar-linear-heart', '', ['width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
             'title' => 'class="w-6 h-6" — KNOWN DIVERGENCE',
-            'expected' => 'Effective class is "w-6 h-6" only: browsers keep the FIRST of two class attributes, so the file solar classes are shadowed (React merges them instead).',
-            'html' => $factory->svg('solar-linear-heart', 'w-6 h-6')->toHtml(),
+            'expected' => 'Effective class is "w-6 h-6" only: browsers keep the FIRST of two class attributes, so the file solar classes are shadowed (React merges them instead). Tailwind caveat: classes passed as PHP strings are invisible to Tailwind content scanning — they only work if safelisted or also present in templates (see README).',
+            'html' => $factory->svg('solar-linear-heart', 'w-6 h-6', ['width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
             'title' => 'style="color: red"',
             'expected' => 'Icon renders red. File roots carry no style attribute, so no conflict.',
-            'html' => $factory->svg('solar-linear-heart', '', ['style' => 'color: red'])->toHtml(),
+            'html' => $factory->svg('solar-linear-heart', '', ['style' => 'color: red', 'width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
             'title' => 'stroke-width="2.5" over file default 1.5',
             'expected' => 'Renders at 2.5: the passed attribute is injected BEFORE the file one, browsers keep the first.',
-            'html' => $factory->svg('solar-linear-heart', '', ['stroke-width' => '2.5'])->toHtml(),
+            'html' => $factory->svg('solar-linear-heart', '', ['stroke-width' => '2.5', 'width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
             'title' => 'width="48" height="48"',
@@ -99,12 +99,17 @@ Route::get('/solar/challenge', function () {
         [
             'title' => 'Duotone accent + opacity vars',
             'expected' => 'Secondary layer blue at 0.5 opacity, primary inherits color.',
-            'html' => $factory->svg('solar-line-duotone-heart', '', ['style' => 'color: #1c274c; --solar-secondary-color: #2563eb; --solar-secondary-opacity: 0.5'])->toHtml(),
+            'html' => $factory->svg('solar-line-duotone-heart', '', ['style' => 'color: #1c274c; --solar-secondary-color: #2563eb; --solar-secondary-opacity: 0.5', 'width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
             'title' => 'Chaos — class + style + stroke + size combined',
             'expected' => 'Size 40, green, stroke 2, custom class effective, solar classes shadowed (same divergence as #2).',
             'html' => $factory->svg('solar-bold-heart', 'w-10 h-10', ['style' => 'color: green', 'stroke-width' => '2', 'width' => '40', 'height' => '40'])->toHtml(),
+        ],
+        [
+            'title' => 'Custom CSS class beats width attributes',
+            'expected' => 'Renders at 64px, not 48: .sizer-64 is a real stylesheet rule on this page, and CSS beats presentational width/height attributes. This is the reliable way to size icons via classes.',
+            'html' => $factory->svg('solar-linear-heart', 'sizer-64', ['width' => '48', 'height' => '48'])->toHtml(),
         ],
     ];
 

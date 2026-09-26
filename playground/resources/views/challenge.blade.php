@@ -15,11 +15,11 @@
         @media (prefers-color-scheme: dark) { section { background: #1e293b; border-color: #334155; } }
         h2 { font-size: 15px; margin: 0 0 8px; }
         .render { font-size: 32px; margin: 8px 0; }
-        .render svg { width: 48px; height: 48px; }
         .expected { font-size: 13px; background: #f1f5f9; border-radius: 8px; padding: 8px 12px; margin: 8px 0; }
         @media (prefers-color-scheme: dark) { .expected { background: #0f172a; } }
         pre { font-size: 11px; overflow-x: auto; background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 12px; white-space: pre-wrap; word-break: break-all; }
         a { color: #2563eb; font-size: 13px; }
+        .sizer-64 { width: 64px; height: 64px; }
     </style>
 </head>
 <body>

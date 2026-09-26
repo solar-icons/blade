@@ -41,6 +41,23 @@ And even use inline styles:
 <x-solar-linear-heart style="color: #555" />
 ```
 
+### A note on Tailwind classes
+
+Tailwind generates CSS by scanning your template files for class names.
+Classes passed as dynamic PHP strings (variables, database values, or the
+dynamic `<x-solar-icon>` component) are invisible to that scan, so no CSS
+is generated for them. Either safelist the classes you use in
+`tailwind.config.js`, or prefer attributes that always work regardless of
+your CSS pipeline: `width`/`height`, `style`, and `stroke-width`.
+
+### A note on the `class` attribute
+
+Blade Icons prepends a passed `class` to the icon's own
+`solar solar-{name}-{style}` classes, producing two `class` attributes on
+the `<svg>`. Browsers apply the first one, so a passed class shadows the
+built-in solar classes (our JS packages merge them instead). If you rely
+on `.solar-*` selectors, avoid passing `class` on the same icon.
+
 ## Dynamic icons
 
 One component covers every icon and style — handy for switching styles
