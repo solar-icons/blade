@@ -41,6 +41,20 @@ And even use inline styles:
 <x-solar-linear-heart style="color: #555" />
 ```
 
+## Dynamic icons
+
+One component covers every icon and style — handy for switching styles
+server-side or rendering icon names coming from the database:
+
+```blade
+<x-solar-icon name="heart" weight="linear" />
+<x-solar-icon name="heart" weight="bold-duotone" class="w-6 h-6" />
+<x-solar-icon :name="$menuItem->icon" weight="linear" />
+```
+
+`weight` defaults to `linear`. Unknown names or weights fail fast with an
+exception instead of rendering silently broken output.
+
 Duotone styles (`bold-duotone`, `line-duotone`) expose a second color via CSS variables, which the browser resolves at render time:
 
 ```blade

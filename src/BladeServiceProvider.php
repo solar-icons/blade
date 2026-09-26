@@ -6,7 +6,9 @@ namespace SolarIcons\Blade;
 
 use BladeUI\Icons\Factory;
 use Illuminate\Contracts\Container\Container;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use SolarIcons\Blade\Components\SolarIcon;
 
 final class BladeServiceProvider extends ServiceProvider
 {
@@ -47,6 +49,10 @@ final class BladeServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'solar-icons-blade');
+
+        Blade::component('solar-icon', SolarIcon::class);
+
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../resources/svg' => public_path('vendor/solar-icons-blade'),
