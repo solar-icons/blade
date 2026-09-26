@@ -29,6 +29,7 @@ Route::get('/solar', function (Request $request) {
 
     $svgDir = base_path('vendor/solar-icons/blade/resources/svg');
     $icons = [];
+    $hashes = [];
 
     // Match longest style prefixes first: a "bold-*.svg" glob would also
     // catch "bold-duotone-*" files.
@@ -44,6 +45,7 @@ Route::get('/solar', function (Request $request) {
 
                     if ($search === '' || str_contains($icon, strtolower($search))) {
                         $icons[] = $icon;
+                        $hashes[] = md5_file($path);
                     }
                 }
                 break;
@@ -53,16 +55,14 @@ Route::get('/solar', function (Request $request) {
 
     sort($icons);
     $total = count($icons);
-    $perPage = 240;
-    $pages = max(1, (int) ceil($total / $perPage));
-    $page = min($pages, max(1, (int) $request->query('page', 1)));
-    $icons = array_slice($icons, ($page - 1) * $perPage, $perPage);
+    // Deprecated-alias files reuse the canonical SVG byte-for-byte, so
+    // unique contents = unique icons.
+    $unique = count(array_unique($hashes));
 
     $styleAttr = "color: {$color}; --solar-secondary-color: {$secondary}; --solar-secondary-opacity: {$opacity}";
 
     return view('solar', compact(
         'style', 'search', 'size', 'color', 'stroke',
-        'secondary', 'opacity', 'icons', 'total', 'styleAttr',
-        'page', 'pages'
+        'secondary', 'opacity', 'icons', 'total', 'unique', 'styleAttr'
     ));
 });

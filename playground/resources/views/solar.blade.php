@@ -67,19 +67,7 @@
         <code>&lt;x-solar-icon name="heart" weight="{{ $style }}" … /&gt;</code>
     </div>
 
-    <p class="stats">Showing {{ count($icons) }} of {{ $total }} icons ({{ $style }}) — page {{ $page }} of {{ $pages }}.</p>
-
-    @if ($pages > 1)
-        <p class="pager">
-            @for ($p = 1; $p <= $pages; $p++)
-                @if ($p === $page)
-                    <strong>{{ $p }}</strong>
-                @else
-                    <a href="/solar?{{ http_build_query(array_merge(request()->query(), ['page' => $p])) }}">{{ $p }}</a>
-                @endif
-            @endfor
-        </p>
-    @endif
+    <p class="stats">Showing all {{ $total }} files ({{ $unique }} icons + {{ $total - $unique }} deprecated aliases) in {{ $style }}.</p>
 
     <div class="grid">
         @foreach ($icons as $icon)
