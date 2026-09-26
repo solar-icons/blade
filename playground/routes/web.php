@@ -77,9 +77,9 @@ Route::get('/solar/challenge', function () {
             'html' => $factory->svg('solar-linear-heart', '', ['width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
-            'title' => 'class="w-6 h-6" — KNOWN DIVERGENCE',
-            'expected' => 'Effective class is "w-6 h-6" only: browsers keep the FIRST of two class attributes, so the file solar classes are shadowed (React merges them instead). Tailwind caveat: classes passed as PHP strings are invisible to Tailwind content scanning — they only work if safelisted or also present in templates (see README).',
-            'html' => $factory->svg('solar-linear-heart', 'w-6 h-6', ['width' => '48', 'height' => '48'])->toHtml(),
+            'title' => 'class="demo-red" — KNOWN DIVERGENCE',
+            'expected' => 'Renders RED via the passed class (first class attribute wins), solar classes shadowed (React merges them instead). A real stylesheet class is used on purpose: Tailwind utilities passed as PHP strings would resolve to nothing.',
+            'html' => $factory->svg('solar-linear-heart', 'demo-red', ['width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
             'title' => 'style="color: red"',
@@ -103,8 +103,8 @@ Route::get('/solar/challenge', function () {
         ],
         [
             'title' => 'Chaos — class + style + stroke + size combined',
-            'expected' => 'Size 40, green, stroke 2, custom class effective, solar classes shadowed (same divergence as #2).',
-            'html' => $factory->svg('solar-bold-heart', 'w-10 h-10', ['style' => 'color: green', 'stroke-width' => '2', 'width' => '40', 'height' => '40'])->toHtml(),
+            'expected' => 'Size 40, green (inline style beats the demo-red class), stroke 2, orange outline from the passed class, solar classes shadowed (same divergence as #2).',
+            'html' => $factory->svg('solar-bold-heart', 'demo-red demo-outline', ['style' => 'color: green', 'stroke-width' => '2', 'width' => '40', 'height' => '40'])->toHtml(),
         ],
         [
             'title' => 'Custom CSS class beats width attributes',

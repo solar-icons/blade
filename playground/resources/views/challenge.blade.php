@@ -19,6 +19,11 @@
         @media (prefers-color-scheme: dark) { .expected { background: #0f172a; } }
         pre { font-size: 11px; overflow-x: auto; background: #0f172a; color: #e2e8f0; border-radius: 8px; padding: 12px; white-space: pre-wrap; word-break: break-all; }
         a { color: #2563eb; font-size: 13px; }
+        /* Demo classes: real stylesheet rules, so their effect is observable.
+           (Tailwind utilities would NOT work here — Tailwind scans template
+           files for candidates and never sees PHP strings.) */
+        .demo-red { color: red; }
+        .demo-outline { outline: 2px solid orange; }
         .sizer-64 { width: 64px; height: 64px; }
     </style>
 </head>
