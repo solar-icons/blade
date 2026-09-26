@@ -66,3 +66,47 @@ Route::get('/solar', function (Request $request) {
         'secondary', 'opacity', 'icons', 'total', 'unique', 'styleAttr'
     ));
 });
+
+Route::get('/solar/challenge', function () {
+    $factory = app(BladeUI\Icons\Factory::class);
+
+    $scenarios = [
+        [
+            'title' => 'Baseline — no attributes',
+            'expected' => 'solar + solar-heart-linear effective, stroke 1.5, currentColor inherits.',
+            'html' => $factory->svg('solar-linear-heart')->toHtml(),
+        ],
+        [
+            'title' => 'class="w-6 h-6" — KNOWN DIVERGENCE',
+            'expected' => 'Effective class is "w-6 h-6" only: browsers keep the FIRST of two class attributes, so the file solar classes are shadowed (React merges them instead).',
+            'html' => $factory->svg('solar-linear-heart', 'w-6 h-6')->toHtml(),
+        ],
+        [
+            'title' => 'style="color: red"',
+            'expected' => 'Icon renders red. File roots carry no style attribute, so no conflict.',
+            'html' => $factory->svg('solar-linear-heart', '', ['style' => 'color: red'])->toHtml(),
+        ],
+        [
+            'title' => 'stroke-width="2.5" over file default 1.5',
+            'expected' => 'Renders at 2.5: the passed attribute is injected BEFORE the file one, browsers keep the first.',
+            'html' => $factory->svg('solar-linear-heart', '', ['stroke-width' => '2.5'])->toHtml(),
+        ],
+        [
+            'title' => 'width="48" height="48"',
+            'expected' => 'Sized 48px. Files carry no dimensions, single clean attributes.',
+            'html' => $factory->svg('solar-linear-heart', '', ['width' => '48', 'height' => '48'])->toHtml(),
+        ],
+        [
+            'title' => 'Duotone accent + opacity vars',
+            'expected' => 'Secondary layer blue at 0.5 opacity, primary inherits color.',
+            'html' => $factory->svg('solar-line-duotone-heart', '', ['style' => 'color: #1c274c; --solar-secondary-color: #2563eb; --solar-secondary-opacity: 0.5'])->toHtml(),
+        ],
+        [
+            'title' => 'Chaos — class + style + stroke + size combined',
+            'expected' => 'Size 40, green, stroke 2, custom class effective, solar classes shadowed (same divergence as #2).',
+            'html' => $factory->svg('solar-bold-heart', 'w-10 h-10', ['style' => 'color: green', 'stroke-width' => '2', 'width' => '40', 'height' => '40'])->toHtml(),
+        ],
+    ];
+
+    return view('challenge', compact('scenarios'));
+});
