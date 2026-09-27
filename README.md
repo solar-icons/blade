@@ -1,3 +1,5 @@
+[![Solar Icons](https://raw.githubusercontent.com/saoudi-h/solar-icons/main/apps/docs/ressources/solar-icons-banner.png "Solar Icons")](https://solar-icons.vercel.app)
+
 # Solar Icons for Laravel Blade
 
 A package to easily make use of [Solar Icons](https://solar-icons.vercel.app) in your Laravel Blade views.
