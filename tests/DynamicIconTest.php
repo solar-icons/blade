@@ -33,8 +33,33 @@ class DynamicIconTest extends TestCase
     {
         $result = Blade::render('<x-solar-icon name="heart" weight="linear" class="w-6 h-6" style="color: #555" />');
 
-        $this->assertStringContainsString('class="w-6 h-6"', $result);
         $this->assertStringContainsString('style="color: #555"', $result);
+    }
+
+    public function test_it_merges_classes_into_a_single_attribute()
+    {
+        $result = Blade::render('<x-solar-icon name="heart" weight="linear" class="demo-red" />');
+
+        $this->assertSame(1, substr_count($result, 'class="'));
+        $this->assertStringContainsString('class="solar solar-heart-linear demo-red"', $result);
+    }
+
+    public function test_it_keeps_a_single_stroke_width_with_the_passed_value()
+    {
+        $result = Blade::render('<x-solar-icon name="heart" weight="linear" stroke-width="2.5" />');
+
+        $this->assertSame(1, substr_count($result, 'stroke-width="'));
+        $this->assertStringContainsString('stroke-width="2.5"', $result);
+    }
+
+    public function test_it_merges_config_default_classes()
+    {
+        config()->set('solar-icons-blade.class', 'icon-default');
+
+        $result = Blade::render('<x-solar-icon name="heart" weight="linear" class="demo-red" />');
+
+        $this->assertSame(1, substr_count($result, 'class="'));
+        $this->assertStringContainsString('class="solar solar-heart-linear icon-default demo-red"', $result);
     }
 
     public function test_it_rejects_an_unknown_weight()

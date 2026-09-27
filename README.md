@@ -56,7 +56,9 @@ Blade Icons prepends a passed `class` to the icon's own
 `solar solar-{name}-{style}` classes, producing two `class` attributes on
 the `<svg>`. Browsers apply the first one, so a passed class shadows the
 built-in solar classes (our JS packages merge them instead). If you rely
-on `.solar-*` selectors, avoid passing `class` on the same icon.
+on `.solar-*` selectors, avoid passing `class` on the same icon — or use
+the dynamic `<x-solar-icon>` component, which merges everything into a
+single valid attribute set (`class="solar solar-heart-linear demo-red"`).
 
 ## Dynamic icons
 

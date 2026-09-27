@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
 use SolarIcons\Blade\BladeServiceProvider;
 
@@ -110,6 +111,11 @@ Route::get('/solar/challenge', function () {
             'title' => 'Custom CSS class beats width attributes',
             'expected' => 'Renders at 64px, not 48: .sizer-64 is a real stylesheet rule on this page, and CSS beats presentational width/height attributes. This is the reliable way to size icons via classes.',
             'html' => $factory->svg('solar-linear-heart', 'sizer-64', ['width' => '48', 'height' => '48'])->toHtml(),
+        ],
+        [
+            'title' => 'Dynamic component merges classes (the #2 fix)',
+            'expected' => 'Single class attribute: "solar solar-heart-linear demo-red" — file, config and passed classes concatenated. No duplicate attributes anywhere.',
+            'html' => Blade::render('<x-solar-icon name="heart" weight="linear" class="demo-red" width="48" height="48" />'),
         ],
     ];
 
