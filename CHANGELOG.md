@@ -2,6 +2,8 @@
 
 All notable changes to `solar-icons/blade` will be documented in this file.
 
+## v2.0.0 (Initial release, in line with the Solar Icons v2 family)
+
 ## Unreleased
 
 - Full catalog generated from `@solar-icons/static` (8,784 SVGs: 1,451 icons × 6 styles + 13 deprecated aliases × 6), with catalog guards (per-style counts, no root dimensions, no hardcoded hex, solar classes) and generated `SolarIcon` enum (8,706 canonical cases).
