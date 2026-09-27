@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" class="solar solar-podcast-linear"><path d="M9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10V13C15 14.6569 13.6569 16 12 16C10.3431 16 9 14.6569 9 13V10Z" stroke="currentColor" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M9 10C9 8.34315 10.3431 7 12 7C13.6569 7 15 8.34315 15 10V13C15 14.6569 13.6569 16 12 16C10.3431 16 9 14.6569 9 13V10Z" stroke="currentColor" stroke-linecap="round"/>
 <path d="M13 10L15 10" stroke="currentColor" stroke-linecap="round"/>
 <path d="M13 13L15 13" stroke="currentColor" stroke-linecap="round"/>
 <path d="M9 10L10 10M9 13L10 13" stroke="currentColor" stroke-linecap="round"/>

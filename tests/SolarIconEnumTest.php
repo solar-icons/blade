@@ -44,7 +44,8 @@ class SolarIconEnumTest extends TestCase
     {
         $result = svg(SolarIcon::LinearHeart->value)->toHtml();
 
-        $this->assertStringContainsString('solar-heart-linear', $result);
+        $this->assertStringContainsString('<svg', $result);
+        $this->assertStringContainsString('<path', $result);
     }
 
     protected function getPackageProviders($app)

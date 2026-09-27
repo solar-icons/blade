@@ -52,13 +52,23 @@ your CSS pipeline: `width`/`height`, `style`, and `stroke-width`.
 
 ### A note on the `class` attribute
 
-Blade Icons prepends a passed `class` to the icon's own
-`solar solar-{name}-{style}` classes, producing two `class` attributes on
-the `<svg>`. Browsers apply the first one, so a passed class shadows the
-built-in solar classes (our JS packages merge them instead). If you rely
-on `.solar-*` selectors, avoid passing `class` on the same icon — or use
-the dynamic `<x-solar-icon>` component, which merges everything into a
-single valid attribute set (`class="solar solar-heart-linear demo-red"`).
+Shipped SVGs intentionally carry no `class` attribute: a passed class
+would otherwise sit next to it as a duplicate attribute, and browsers
+would silently keep only the first — making any built-in `solar-*`
+hooks unreliable depending on whether you happened to pass a class.
+Unlike our JS packages, Blade cannot merge them (Blade Icons prepends
+instead of merging).
+
+To target all Solar icons at once, set a global class in the published
+config — it applies cleanly since files carry none:
+
+```php
+// config/solar-icons-blade.php
+'class' => 'solar',
+```
+
+The dynamic `<x-solar-icon>` component additionally merges config and
+passed classes into a single valid attribute.
 
 ## Dynamic icons
 

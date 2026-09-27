@@ -74,12 +74,12 @@ Route::get('/solar/challenge', function () {
     $scenarios = [
         [
             'title' => 'Baseline — no styling attributes',
-            'expected' => 'solar + solar-heart-linear effective, stroke 1.5, currentColor inherits. (Fixed 48px via attributes for display only.)',
+            'expected' => 'No class attribute by design (files ship class-free so a passed class can never duplicate). Stroke 1.5, currentColor inherits. (Fixed 48px via attributes for display only.)',
             'html' => $factory->svg('solar-linear-heart', '', ['width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
-            'title' => 'class="demo-red" — KNOWN DIVERGENCE',
-            'expected' => 'Renders RED via the passed class (first class attribute wins), solar classes shadowed (React merges them instead). A real stylesheet class is used on purpose: Tailwind utilities passed as PHP strings would resolve to nothing.',
+            'title' => 'class="demo-red"',
+            'expected' => 'Renders RED: single clean class attribute, since files carry none. A real stylesheet class is used on purpose: Tailwind utilities passed as PHP strings would resolve to nothing.',
             'html' => $factory->svg('solar-linear-heart', 'demo-red', ['width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
@@ -104,7 +104,7 @@ Route::get('/solar/challenge', function () {
         ],
         [
             'title' => 'Chaos — class + style + stroke + size combined',
-            'expected' => 'Size 40, green (inline style beats the demo-red class), stroke 2, orange outline from the passed class, solar classes shadowed (same divergence as #2).',
+            'expected' => 'Size 40, green (inline style beats the demo-red class), stroke 2, orange outline from the passed class. All single valid attributes.',
             'html' => $factory->svg('solar-bold-heart', 'demo-red demo-outline', ['style' => 'color: green', 'stroke-width' => '2', 'width' => '40', 'height' => '40'])->toHtml(),
         ],
         [
@@ -113,8 +113,8 @@ Route::get('/solar/challenge', function () {
             'html' => $factory->svg('solar-linear-heart', 'sizer-64', ['width' => '48', 'height' => '48'])->toHtml(),
         ],
         [
-            'title' => 'Dynamic component merges classes (the #2 fix)',
-            'expected' => 'Single class attribute: "solar solar-heart-linear demo-red" — file, config and passed classes concatenated. No duplicate attributes anywhere.',
+            'title' => 'Dynamic component merges config + passed classes',
+            'expected' => 'Single class attribute merging config and passed classes. Files contribute none by design, so output is always valid HTML.',
             'html' => Blade::render('<x-solar-icon name="heart" weight="linear" class="demo-red" width="48" height="48" />'),
         ],
     ];

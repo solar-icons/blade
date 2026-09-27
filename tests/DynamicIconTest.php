@@ -19,14 +19,16 @@ class DynamicIconTest extends TestCase
         $result = Blade::render('<x-solar-icon name="heart" weight="bold" />');
 
         $this->assertStringContainsString('<svg', $result);
-        $this->assertStringContainsString('solar-heart-bold', $result);
+        // Bold artwork is filled, linear is stroked — proves the weight resolved.
+        $this->assertStringContainsString('fill="currentColor"', $result);
     }
 
     public function test_it_defaults_to_linear()
     {
         $result = Blade::render('<x-solar-icon name="heart" />');
 
-        $this->assertStringContainsString('solar-heart-linear', $result);
+        $this->assertStringContainsString('<svg', $result);
+        $this->assertStringContainsString('stroke-linecap="round"', $result);
     }
 
     public function test_it_forwards_class_and_style()
@@ -41,7 +43,7 @@ class DynamicIconTest extends TestCase
         $result = Blade::render('<x-solar-icon name="heart" weight="linear" class="demo-red" />');
 
         $this->assertSame(1, substr_count($result, 'class="'));
-        $this->assertStringContainsString('class="solar solar-heart-linear demo-red"', $result);
+        $this->assertStringContainsString('class="demo-red"', $result);
     }
 
     public function test_it_keeps_a_single_stroke_width_with_the_passed_value()
@@ -59,7 +61,7 @@ class DynamicIconTest extends TestCase
         $result = Blade::render('<x-solar-icon name="heart" weight="linear" class="demo-red" />');
 
         $this->assertSame(1, substr_count($result, 'class="'));
-        $this->assertStringContainsString('class="solar solar-heart-linear icon-default demo-red"', $result);
+        $this->assertStringContainsString('class="icon-default demo-red"', $result);
     }
 
     public function test_it_rejects_an_unknown_weight()

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" class="solar solar-grip-broken"><circle cx="12.0161" cy="19" r="0.75" transform="rotate(90 12.0161 19)" stroke="currentColor" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12.0161" cy="19" r="0.75" transform="rotate(90 12.0161 19)" stroke="currentColor" stroke-linecap="round"/>
 <circle cx="12.0161" cy="12" r="0.75" transform="rotate(90 12.0161 12)" stroke="currentColor" stroke-linecap="round"/>
 <circle cx="12" cy="5" r="0.75" transform="rotate(90 12 5)" stroke="currentColor" stroke-linecap="round"/>
 <circle cx="5.00781" cy="19" r="0.75" transform="rotate(90 5.00781 19)" stroke="currentColor" stroke-linecap="round"/>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" class="solar solar-tuning-4-linear"><circle cx="12" cy="12" r="2" transform="rotate(-90 12 12)" stroke="currentColor" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><circle cx="12" cy="12" r="2" transform="rotate(-90 12 12)" stroke="currentColor" stroke-linecap="round"/>
 <circle cx="10" cy="20" r="2" transform="rotate(-90 10 20)" stroke="currentColor" stroke-linecap="round"/>
 <circle cx="2" cy="2" r="2" transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 16 6)" stroke="currentColor" stroke-linecap="round"/>
 <path d="M16 12L19 12" stroke="currentColor" stroke-linecap="round"/>

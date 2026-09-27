@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5" class="solar solar-server-path-linear"><path d="M22 19H14M2 19H10" stroke="currentColor" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.5"><path d="M22 19H14M2 19H10" stroke="currentColor" stroke-linecap="round"/>
 <path d="M12 17V14" stroke="currentColor" stroke-linecap="round"/>
 <circle cx="12" cy="19" r="2" stroke="currentColor" stroke-linecap="round"/>
 <path d="M2 11C2 9.34315 3.34315 8 5 8H19C20.6569 8 22 9.34315 22 11C22 12.6569 20.6569 14 19 14H5C3.34315 14 2 12.6569 2 11Z" stroke="currentColor" stroke-linecap="round"/>

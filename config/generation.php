@@ -17,6 +17,10 @@ $svgNormalization = static function (string $tempFilepath, array $iconSet) {
     $svgElement = $doc->getElementsByTagName('svg')[0];
     $svgElement->removeAttribute('width');
     $svgElement->removeAttribute('height');
+    // No class in shipped files: a passed class would otherwise duplicate
+    // it (browsers keep the first), making `.solar-*` hooks unreliable.
+    // Target all icons through the `class` config option instead.
+    $svgElement->removeAttribute('class');
     $doc->save($tempFilepath);
 
     $fileLines = file($tempFilepath);

@@ -74,18 +74,20 @@ class IconCatalogTest extends TestCase
         $this->assertSame([], array_slice($badHex, 0, 10), 'SVGs with hardcoded hex colors found');
     }
 
-    public function test_every_file_carries_a_solar_class()
+    public function test_no_file_carries_a_class_attribute()
     {
-        // Deprecated-alias files intentionally reuse the canonical SVG
-        // (and its class), so only the generic marker is asserted here.
-        $missing = [];
+        // Shipped files intentionally carry no class: a passed class would
+        // otherwise duplicate it and browsers would keep only the first,
+        // making `.solar-*` hooks unreliable. Target all icons through
+        // the `class` config option instead.
+        $withClass = [];
 
         foreach (glob($this->svgDir.'/*.svg') as $path) {
-            if (! str_contains((string) file_get_contents($path), 'class="solar solar-')) {
-                $missing[] = basename($path);
+            if (preg_match('/<svg[^>]*\sclass=/', (string) file_get_contents($path))) {
+                $withClass[] = basename($path);
             }
         }
 
-        $this->assertSame([], array_slice($missing, 0, 10), 'SVGs missing their solar CSS class found');
+        $this->assertSame([], array_slice($withClass, 0, 10), 'SVGs with a class attribute found');
     }
 }
