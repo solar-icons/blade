@@ -41,48 +41,15 @@ And even use inline styles:
 <x-solar-linear-heart style="color: #555" />
 ```
 
-### A note on Tailwind classes
-
-Tailwind generates CSS by scanning your template files for class names.
-Classes passed as dynamic PHP strings (variables, database values, or the
-dynamic `<x-solar-icon>` component) are invisible to that scan, so no CSS
-is generated for them. Either safelist the classes you use in
-`tailwind.config.js`, or prefer attributes that always work regardless of
-your CSS pipeline: `width`/`height`, `style`, and `stroke-width`.
-
-### A note on the `class` attribute
-
-Shipped SVGs intentionally carry no `class` attribute: a passed class
-would otherwise sit next to it as a duplicate attribute, and browsers
-would silently keep only the first — making any built-in `solar-*`
-hooks unreliable depending on whether you happened to pass a class.
-Unlike our JS packages, Blade cannot merge them (Blade Icons prepends
-instead of merging).
-
-To target all Solar icons at once, set a global class in the published
-config — it applies cleanly since files carry none:
-
-```php
-// config/solar-icons-blade.php
-'class' => 'solar',
-```
-
-The dynamic `<x-solar-icon>` component additionally merges config and
-passed classes into a single valid attribute.
-
 ## Dynamic icons
 
-One component covers every icon and style — handy for switching styles
-server-side or rendering icon names coming from the database:
+One component covers every icon and style — handy for switching styles server-side or rendering icon names coming from the database:
 
 ```blade
 <x-solar-icon name="heart" weight="linear" />
 <x-solar-icon name="heart" weight="bold-duotone" class="w-6 h-6" />
 <x-solar-icon :name="$menuItem->icon" weight="linear" />
 ```
-
-`weight` defaults to `linear`. Unknown names or weights fail fast with an
-exception instead of rendering silently broken output.
 
 Duotone styles (`bold-duotone`, `line-duotone`) expose a second color via CSS variables, which the browser resolves at render time:
 
