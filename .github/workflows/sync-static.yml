@@ -1,0 +1,138 @@
+name: Sync static catalog
+
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: 'Cut a release without static changes (PHP-only fix)'
+        required: false
+        default: 'none'
+        type: choice
+        options: ['none', 'patch', 'minor']
+  schedule:
+    - cron: '0 6 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Check for a newer @solar-icons/static
+        id: static
+        run: |
+          PINNED=$(cat .static-version)
+          LATEST=$(npm view @solar-icons/static version)
+          echo "pinned=${PINNED}" >> "$GITHUB_OUTPUT"
+          echo "latest=${LATEST}" >> "$GITHUB_OUTPUT"
+          if [ "${LATEST}" != "${PINNED}" ]; then
+            echo "update=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "update=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Refresh icon catalog from static tarball
+        if: steps.static.outputs.update == 'true'
+        run: |
+          rm -rf node_modules/@solar-icons/static
+          mkdir -p node_modules/@solar-icons
+          npm pack @solar-icons/static@${{ steps.static.outputs.latest }} --pack-destination /tmp
+          mkdir -p node_modules/@solar-icons/static
+          tar -xzf /tmp/solar-icons-static-*.tgz -C node_modules/@solar-icons/static --strip-components=1
+          php vendor/bin/blade-icons-generate
+          php bin/generate-enum.php
+          echo "${{ steps.static.outputs.latest }}" > .static-version
+
+      - name: Detect icon changes
+        id: detect
+        if: steps.static.outputs.update == 'true'
+        run: |
+          git add -A -n > /dev/null 2>&1 || true
+          php bin/detect-icon-changes.php >> "$GITHUB_OUTPUT"
+          git add resources/svg/ src/SolarIcon.php .static-version package.json
+
+      - name: Decide bump type
+        id: bump
+        run: |
+          if [ "${{ inputs.release }}" != "" ] && [ "${{ inputs.release }}" != "none" ]; then
+            echo "type=${{ inputs.release }}" >> "$GITHUB_OUTPUT"
+            echo "reason=Manual PHP-only release" >> "$GITHUB_OUTPUT"
+          elif [ "${{ steps.detect.outputs.bump }}" != "" ] && [ "${{ steps.detect.outputs.bump }}" != "none" ]; then
+            echo "type=${{ steps.detect.outputs.bump }}" >> "$GITHUB_OUTPUT"
+            echo "reason=Built from @solar-icons/static ${{ steps.static.outputs.latest }} (+${{ steps.detect.outputs.added }}/~${{ steps.detect.outputs.modified }}/-${{ steps.detect.outputs.deleted }})" >> "$GITHUB_OUTPUT"
+          else
+            echo "type=none" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Compute next version
+        id: version
+        if: steps.bump.outputs.type != 'none'
+        run: |
+          LAST=$(git describe --tags --abbrev=0 2>/dev/null || echo "v2.0.0")
+          # If no tag exists yet, the first release is v2.0.0 itself.
+          if ! git rev-parse "$LAST" >/dev/null 2>&1; then
+            echo "version=2.0.0" >> "$GITHUB_OUTPUT"
+          else
+            VER=${LAST#v}
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$VER"
+            if [ "${{ steps.bump.outputs.type }}" = "minor" ]; then
+              MINOR=$((MINOR + 1)); PATCH=0
+            else
+              PATCH=$((PATCH + 1))
+            fi
+            echo "version=${MAJOR}.${MINOR}.${PATCH}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Update CHANGELOG and commit
+        if: steps.bump.outputs.type != 'none'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          ENTRY="## v${VERSION} (${{ steps.bump.outputs.reason }})"
+          python3 - "$ENTRY" <<'EOF'
+          import sys
+          entry = sys.argv[1]
+          path = 'CHANGELOG.md'
+          content = open(path).read()
+          marker = 'will be documented in this file.\n'
+          content = content.replace(marker, marker + '\n' + entry + '\n', 1)
+          open(path, 'w').write(content)
+          EOF
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add CHANGELOG.md resources/svg/ src/SolarIcon.php .static-version package.json
+          git commit -m "release: v${VERSION} (${{ steps.bump.outputs.reason }})"
+          git tag "v${VERSION}"
+          git push origin main
+          git push origin "v${VERSION}"
+
+      - name: Create GitHub Release
+        if: steps.bump.outputs.type != 'none'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "v${{ steps.version.outputs.version }}" \
+            --title "v${{ steps.version.outputs.version }}" \
+            --notes "${{ steps.bump.outputs.reason }}"
