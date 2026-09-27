@@ -1,5 +1,6 @@
 <?php
 
+use BladeUI\Icons\Factory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -69,7 +70,7 @@ Route::get('/solar', function (Request $request) {
 });
 
 Route::get('/solar/challenge', function () {
-    $factory = app(BladeUI\Icons\Factory::class);
+    $factory = app(Factory::class);
 
     $scenarios = [
         [

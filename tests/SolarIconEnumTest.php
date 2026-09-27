@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests;
 
+use BladeUI\Icons\BladeIconsServiceProvider;
 use Orchestra\Testbench\TestCase;
 use SolarIcons\Blade\BladeServiceProvider;
 use SolarIcons\Blade\SolarIcon;
@@ -51,7 +52,7 @@ class SolarIconEnumTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            \BladeUI\Icons\BladeIconsServiceProvider::class,
+            BladeIconsServiceProvider::class,
             BladeServiceProvider::class,
         ];
     }

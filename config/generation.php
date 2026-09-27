@@ -10,9 +10,8 @@
  * The `after` hook strips width/height so icons scale via CSS, following
  * the blade-icons convention.
  */
-
 $svgNormalization = static function (string $tempFilepath, array $iconSet) {
-    $doc = new DOMDocument();
+    $doc = new DOMDocument;
     $doc->load($tempFilepath);
     $svgElement = $doc->getElementsByTagName('svg')[0];
     $svgElement->removeAttribute('width');

@@ -21,7 +21,7 @@ use function htmlspecialchars;
 final class SvgMerger
 {
     /**
-     * @param array<string, mixed> $attributes
+     * @param  array<string, mixed>  $attributes
      */
     public static function merge(string $svg, array $attributes, string $configClass = '', array $configAttributes = []): string
     {
