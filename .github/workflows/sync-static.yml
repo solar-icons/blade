@@ -79,7 +79,11 @@ jobs:
         run: |
           if [ "${{ inputs.release }}" != "" ] && [ "${{ inputs.release }}" != "none" ]; then
             echo "type=${{ inputs.release }}" >> "$GITHUB_OUTPUT"
-            echo "reason=Manual PHP-only release" >> "$GITHUB_OUTPUT"
+            if git describe --tags --abbrev=0 >/dev/null 2>&1; then
+              echo "reason=Manual PHP-only release" >> "$GITHUB_OUTPUT"
+            else
+              echo "reason=Initial release, in line with the Solar Icons v2 family" >> "$GITHUB_OUTPUT"
+            fi
           elif [ "${{ steps.detect.outputs.bump }}" != "" ] && [ "${{ steps.detect.outputs.bump }}" != "none" ]; then
             echo "type=${{ steps.detect.outputs.bump }}" >> "$GITHUB_OUTPUT"
             echo "reason=Built from @solar-icons/static ${{ steps.static.outputs.latest }} (+${{ steps.detect.outputs.added }}/~${{ steps.detect.outputs.modified }}/-${{ steps.detect.outputs.deleted }})" >> "$GITHUB_OUTPUT"
