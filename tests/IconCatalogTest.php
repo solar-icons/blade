@@ -90,4 +90,21 @@ class IconCatalogTest extends TestCase
 
         $this->assertSame([], array_slice($withClass, 0, 10), 'SVGs with a class attribute found');
     }
+
+    public function test_svgs_have_no_root_stroke_width()
+    {
+        // Shipped files carry no stroke-width: Blade Icons prepends passed
+        // attributes instead of merging, so a root value would duplicate the
+        // attribute on override (browsers keep only the first). The default
+        // 1.5 lives in the `attributes` config instead.
+        $withStrokeWidth = [];
+
+        foreach (glob($this->svgDir.'/*.svg') as $path) {
+            if (preg_match('/<svg[^>]*\sstroke-width=/', (string) file_get_contents($path))) {
+                $withStrokeWidth[] = basename($path);
+            }
+        }
+
+        $this->assertSame([], array_slice($withStrokeWidth, 0, 10), 'SVGs with a root stroke-width found');
+    }
 }

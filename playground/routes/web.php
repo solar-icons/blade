@@ -90,7 +90,7 @@ Route::get('/solar/challenge', function () {
         ],
         [
             'title' => 'stroke-width="2.5" over file default 1.5',
-            'expected' => 'Renders at 2.5: the passed attribute is injected BEFORE the file one, browsers keep the first.',
+            'expected' => 'Renders at 2.5: single stroke-width attribute — files carry none, so the passed value replaces the config default instead of duplicating it.',
             'html' => $factory->svg('solar-linear-heart', '', ['stroke-width' => '2.5', 'width' => '48', 'height' => '48'])->toHtml(),
         ],
         [

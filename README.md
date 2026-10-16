@@ -73,6 +73,12 @@ Then use them in your views like:
 <img src="{{ asset('vendor/solar-icons-blade/linear-heart.svg') }}" width="10" height="10" />
 ```
 
+Keep in mind these files are normalized for framework use: like the components,
+they ship without a baked `stroke-width` (the default `1.5` is applied once at
+render time from the package config). A standalone `<img>` therefore renders
+with the SVG default stroke width. Prefer the components, or `@solar-icons/static`
+when you need the raw artwork with its own defaults.
+
 ## Configuration
 
 This package also offers the ability to use features from Blade Icons like default classes, default attributes, etc. If you'd like to configure these, publish the config file:

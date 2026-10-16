@@ -50,6 +50,11 @@ return [
     */
 
     'attributes' => [
+        // Default stroke width for every icon. The generated files carry no
+        // stroke-width (see config/generation.php), so it is applied exactly
+        // once, and a passed value replaces it instead of duplicating the
+        // attribute on the root <svg>.
+        'stroke-width' => '1.5',
         // 'width' => 50,
         // 'height' => 50,
     ],
