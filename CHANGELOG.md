@@ -4,6 +4,8 @@ All notable changes to `solar-icons/blade` will be documented in this file.
 
 ## Unreleased
 
+## v2.0.1 (Manual PHP-only release)
+
 - Stroke width is now applied once from the package config instead of being baked into each file: this removes the duplicate `stroke-width` attribute Blade Icons produced when overriding the stroke width on a static `<x-solar-*>` component or via `svg()`. Raw SVGs published as assets ship without a baked `stroke-width` and render with the SVG default when used standalone.
 
 ## v2.0.0 (Initial release, in line with the Solar Icons v2 family)
