@@ -5,13 +5,13 @@ so the grid always renders the working tree: no Packagist, no release.
 
 ## Run
 
-Docker is used as the PHP runtime only, because this checkout has no local
-PHP. The stock `php:8.3-cli` image already bundles what the app needs
-(`dom`, `mbstring`, `pdo_sqlite`, `curl`), and `playground/vendor` is already
-installed, so no custom image and no Composer run are required:
+Docker is used as the PHP runtime only. The stock `php:8.3-cli` image already
+bundles what the app needs (`dom`, `mbstring`, `pdo_sqlite`, `curl`), and
+`playground/vendor` is already installed, so no custom image and no Composer
+run are required:
 
 ```bash
-docker run -d --name blade-playground \
+docker run -d --rm --name blade-playground \
   -v "$PWD/..:/bladesrc" -w /bladesrc/playground \
   -p 8321:8000 php:8.3-cli \
   php artisan serve --host=0.0.0.0 --port=8000
@@ -19,7 +19,8 @@ docker run -d --name blade-playground \
 
 Then open http://localhost:8321/solar. Attribute checks live at
 http://localhost:8321/solar/challenge. Stop the server with
-`docker stop blade-playground`.
+`docker stop blade-playground`; the `--rm` flag removes the container at the
+same time.
 
 Reinstalling dependencies (`vendor/` is ignored by git) is the only case that
 needs Composer, and therefore the `zip` extension: use the `composer:2` image
