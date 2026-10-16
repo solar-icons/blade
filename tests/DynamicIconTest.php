@@ -29,6 +29,9 @@ class DynamicIconTest extends TestCase
 
         $this->assertStringContainsString('<svg', $result);
         $this->assertStringContainsString('stroke-linecap="round"', $result);
+        // Default stroke width comes from the config, applied exactly once.
+        $this->assertSame(1, substr_count($result, 'stroke-width="'));
+        $this->assertStringContainsString('stroke-width="1.5"', $result);
     }
 
     public function test_it_forwards_class_and_style()

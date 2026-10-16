@@ -7,8 +7,12 @@
  * Icons land in a single set as `{style}-{icon}.svg` via `output-prefix`
  * (the blade-icons `svg()` helper only resolves single-segment prefixes,
  * so the style lives in the filename, not in the set name).
- * The `after` hook strips width/height so icons scale via CSS, following
- * the blade-icons convention.
+ * The `after` hook strips width/height so icons scale via CSS, and strips
+ * class/stroke-width so Blade Icons never duplicates them: Blade Icons
+ * prepends passed attributes to the root <svg> instead of merging, so a
+ * value already present in the file would appear twice and browsers would
+ * silently keep only the first. Their defaults live in the
+ * `solar-icons-blade` config instead.
  */
 $svgNormalization = static function (string $tempFilepath, array $iconSet) {
     $doc = new DOMDocument;
@@ -20,6 +24,10 @@ $svgNormalization = static function (string $tempFilepath, array $iconSet) {
     // it (browsers keep the first), making `.solar-*` hooks unreliable.
     // Target all icons through the `class` config option instead.
     $svgElement->removeAttribute('class');
+    // Same for stroke-width (uniform 1.5 across every style): the default
+    // lives in the `attributes` config, so a passed value replaces it
+    // instead of doubling the attribute on the root <svg>.
+    $svgElement->removeAttribute('stroke-width');
     $doc->save($tempFilepath);
 
     $fileLines = file($tempFilepath);
