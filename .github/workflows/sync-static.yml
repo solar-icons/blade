@@ -115,14 +115,38 @@ jobs:
         run: |
           VERSION="${{ steps.version.outputs.version }}"
           ENTRY="## v${VERSION} (${{ steps.bump.outputs.reason }})"
-          python3 - "$ENTRY" <<'EOF'
+          python3 - "$ENTRY" "${{ steps.bump.outputs.reason }}" <<'EOF'
+          import re
           import sys
-          entry = sys.argv[1]
+
+          entry, reason = sys.argv[1], sys.argv[2]
           path = 'CHANGELOG.md'
           content = open(path).read()
-          marker = 'will be documented in this file.\n'
-          content = content.replace(marker, marker + '\n' + entry + '\n', 1)
+
+          # Move the entries accumulated under "## Unreleased" into the section
+          # being released, so notes always sit under the version they shipped
+          # in, and "## Unreleased" starts empty again.
+          match = re.search(
+              r'^## Unreleased[^\n]*\n(?P<body>.*?)(?=^## |\Z)',
+              content,
+              re.M | re.S,
+          )
+          notes = match.group('body').strip('\n') if match else ''
+
+          section = f'## Unreleased\n\n{entry}\n'
+          if notes:
+              section += f'\n{notes}\n'
+
+          if match:
+              content = content[:match.start()] + section + '\n' + content[match.end():]
+          else:
+              marker = 'will be documented in this file.\n'
+              content = content.replace(marker, marker + '\n' + section, 1)
+
           open(path, 'w').write(content)
+
+          # Same notes for the GitHub Release body, falling back to the reason.
+          open('release-notes.md', 'w').write((notes or reason) + '\n')
           EOF
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -139,4 +163,4 @@ jobs:
         run: |
           gh release create "v${{ steps.version.outputs.version }}" \
             --title "v${{ steps.version.outputs.version }}" \
-            --notes "${{ steps.bump.outputs.reason }}"
+            --notes-file release-notes.md
