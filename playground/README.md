@@ -1,26 +1,36 @@
 # Blade Playground (local only, never published)
 
 Minimal Laravel app consuming `solar-icons/blade` through a path repository,
-so the grid always renders the working tree — no Packagist, no release.
+so the grid always renders the working tree: no Packagist, no release.
 
 ## Run
 
-Requires Docker only (no local PHP needed):
+Docker is used as the PHP runtime only, because this checkout has no local
+PHP. The stock `php:8.3-cli` image already bundles what the app needs
+(`dom`, `mbstring`, `pdo_sqlite`, `curl`), and `playground/vendor` is already
+installed, so no custom image and no Composer run are required:
 
 ```bash
-docker run --rm -v "$PWD/..:/bladesrc" -w /bladesrc/playground -p 8321:8000 solar-blade-php php artisan serve --host=0.0.0.0 --port=8000
+docker run -d --name blade-playground \
+  -v "$PWD/..:/bladesrc" -w /bladesrc/playground \
+  -p 8321:8000 php:8.3-cli \
+  php artisan serve --host=0.0.0.0 --port=8000
 ```
 
-Then open http://localhost:8321/solar.
+Then open http://localhost:8321/solar. Attribute checks live at
+http://localhost:8321/solar/challenge. Stop the server with
+`docker stop blade-playground`.
 
-Build the PHP image once (see flagship worklog `2026-09-26-BLADE-P0.md`
-follow-ups for the Dockerfile): `php:8.3-cli` + `dom`, `mbstring`, `zip`
-+ Composer 2.
+Reinstalling dependencies (`vendor/` is ignored by git) is the only case that
+needs Composer, and therefore the `zip` extension: use the `composer:2` image
+for that. The `solar-icons/blade` entry under `vendor/` is a relative symlink
+to the repository root, so every edit is picked up without reinstalling.
 
 ## What it shows
 
-- Full icon grid for one style at a time (capped at 240, use search).
+- Full icon grid for one style at a time; use search to narrow it down.
 - Controls: style, search, size, color, stroke width, duotone accent + opacity.
 - Top box renders the same icon through the dynamic
   `<x-solar-icon name="…" weight="…" />` component for comparison.
-- Route: `routes/web.php` (`/solar`), view: `resources/views/solar.blade.php`.
+- Routes: `routes/web.php` (`/solar` and `/solar/challenge`), views in
+  `resources/views/`.
