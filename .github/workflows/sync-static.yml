@@ -74,6 +74,11 @@ jobs:
           php bin/detect-icon-changes.php >> "$GITHUB_OUTPUT"
           git add resources/svg/ src/SolarIcon.php .static-version package.json
 
+      # GITHUB_TOKEN pushes do not trigger the separate test workflow.
+      # Verify the regenerated payload here before creating any release tag.
+      - name: Verify the regenerated catalog
+        run: vendor/bin/phpunit
+
       - name: Decide bump type
         id: bump
         run: |
