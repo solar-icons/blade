@@ -37,6 +37,10 @@ jobs:
           coverage: none
 
       - name: Install dependencies
+        # Legacy framework versions are deliberately exercised for compatibility.
+        # Keep the exception in these test jobs; publication uses normal policy.
+        env:
+          COMPOSER_NO_SECURITY_BLOCKING: ${{ matrix.laravel < 12 && '1' || '' }}
         run: |
           composer require "illuminate/contracts=^${{ matrix.laravel }}" --prefer-dist --no-interaction --no-update
           composer update --prefer-dist --no-interaction --no-progress
