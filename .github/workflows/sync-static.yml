@@ -9,6 +9,8 @@ on:
         default: 'none'
         type: choice
         options: ['none', 'patch', 'minor']
+  repository_dispatch:
+    types: [static-published]
   schedule:
     - cron: '0 6 * * 1'
 

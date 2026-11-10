@@ -13,7 +13,9 @@ class SolarIconEnumTest extends TestCase
 {
     public function test_it_exposes_every_canonical_icon_in_every_style()
     {
-        $this->assertCount(8706, SolarIcon::cases());
+        $cases = SolarIcon::cases();
+        $this->assertGreaterThanOrEqual(8706, count($cases));
+        $this->assertSame(0, count($cases) % 6);
         $this->assertSame('solar-linear-heart', SolarIcon::LinearHeart->value);
         $this->assertSame('solar-bold-duotone-heart', SolarIcon::BoldDuotoneHeart->value);
     }
