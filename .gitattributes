@@ -13,3 +13,4 @@ phpunit.xml.dist export-ignore
 README.md export-ignore
 /bin/plan-release.php export-ignore
 /bin/lib export-ignore
+/AGENT.md export-ignore
