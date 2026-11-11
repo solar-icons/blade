@@ -91,6 +91,10 @@ php artisan vendor:publish --tag=solar-icons-blade-config
 
 Full documentation lives on the [Solar Icons docs site](https://solar-icons.vercel.app). Please report PHP-specific bugs here, and open general issues and icon requests in the [main repository](https://github.com/saoudi-h/solar-icons) so everything stays in one place.
 
+## Releases
+
+Releases are proposed by a pull request, never pushed straight to `main`. The daily `sync-static` workflow reads what was declared for `@solar-icons/static`, regenerates the catalogue, and opens a `release/next` pull request with the version and the changelog entry. Merging it tags the release and publishes the GitHub Release; Packagist picks the tag up. A PHP-only fix is released by dispatching `sync-static` with `release` and `summary`. The full procedure lives in [`docs/RELEASE-PROCEDURE.md`](https://github.com/saoudi-h/solar-icons/blob/main/docs/RELEASE-PROCEDURE.md) of the main repository.
+
 ## Changelog
 
 Check out the CHANGELOG in this repository for all the recent changes.
