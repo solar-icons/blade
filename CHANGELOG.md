@@ -4,6 +4,8 @@ All notable changes to `solar-icons/blade` will be documented in this file.
 
 ## Unreleased
 
+## v2.0.4 (Built from @solar-icons/static 2.5.0 (+228/~42/-0))
+
 ## v2.0.3 (Built from @solar-icons/static 2.4.0 (+168/~754/-0))
 
 ## v2.0.2 (Built from @solar-icons/static 2.3.4 (+0/~7542/-0))
