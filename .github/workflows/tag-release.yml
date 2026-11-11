@@ -1,0 +1,71 @@
+name: Tag release
+
+# Merging the release pull request (branch release/next, opened by
+# sync-static.yml) is the maintainer's go-ahead. The tag is pushed only
+# after the merged code is verified again, and Packagist picks it up through
+# its GitHub webhook.
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tag-release
+  cancel-in-progress: false
+
+jobs:
+  tag:
+    if: >-
+      github.event.pull_request.merged == true
+      && github.event.pull_request.head.ref == 'release/next'
+      && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the merged code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip
+          tools: composer:v2
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Verify tests
+        run: vendor/bin/phpunit
+
+      - name: Verify coding standards
+        run: vendor/bin/pint --test
+
+      - name: Read the released version
+        id: release
+        shell: bash
+        run: php bin/plan-release.php --latest-release --notes-file=release-notes.md >> "$GITHUB_OUTPUT"
+
+      - name: Tag and release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.release.outputs.version }}
+        run: |
+          if git rev-parse -q --verify "refs/tags/v${VERSION}" > /dev/null; then
+            echo "v${VERSION} already exists: nothing to do."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -a "v${VERSION}" -m "v${VERSION}"
+          git push origin "v${VERSION}"
+          gh release create "v${VERSION}" --title "v${VERSION}" --notes-file release-notes.md

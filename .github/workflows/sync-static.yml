@@ -1,21 +1,42 @@
 name: Sync static catalog
 
+# Prepares a release pull request. It never tags and never pushes to main:
+# merging the pull request is the go-ahead (see tag-release.yml).
+#
+# The bump and the changelog text are not guessed from file diffs. They are
+# read from what the maintainer declared in the changeset of
+# @solar-icons/static (bin/plan-release.php). Version numbers stay
+# independent per package; only the major has to match.
+
 on:
   workflow_dispatch:
     inputs:
       release:
-        description: 'Cut a release without static changes (PHP-only fix)'
+        description: 'Explicit release instead of the upstream declaration (PHP-only fix, or an override)'
         required: false
         default: 'none'
         type: choice
         options: ['none', 'patch', 'minor']
-  repository_dispatch:
-    types: [static-published]
+      summary:
+        description: 'Changelog text for an explicit release (required when "release" is not none)'
+        required: false
+        default: ''
+        type: string
+      dry_run:
+        description: 'Run every check but push nothing and open no pull request'
+        required: false
+        default: false
+        type: boolean
   schedule:
-    - cron: '0 6 * * 1'
+    - cron: '0 6 * * *'
 
 permissions:
   contents: write
+  pull-requests: write
+
+concurrency:
+  group: sync-static
+  cancel-in-progress: false
 
 jobs:
   sync:
@@ -43,8 +64,9 @@ jobs:
       - name: Install dependencies
         run: composer install --prefer-dist --no-interaction --no-progress
 
-      - name: Check for a newer @solar-icons/static
+      - name: Read the upstream state
         id: static
+        shell: bash
         run: |
           PINNED=$(cat .static-version)
           LATEST=$(npm view @solar-icons/static version)
@@ -56,118 +78,101 @@ jobs:
             echo "update=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # npm answers "published" a little before the tarball is downloadable
+      # everywhere, so a 404 right after a release is retried.
       - name: Refresh icon catalog from static tarball
         if: steps.static.outputs.update == 'true'
+        shell: bash
+        env:
+          LATEST: ${{ steps.static.outputs.latest }}
         run: |
           rm -rf node_modules/@solar-icons/static
-          mkdir -p node_modules/@solar-icons
-          npm pack @solar-icons/static@${{ steps.static.outputs.latest }} --pack-destination /tmp
           mkdir -p node_modules/@solar-icons/static
+          for attempt in 1 2 3 4 5; do
+            if npm pack "@solar-icons/static@${LATEST}" --pack-destination /tmp; then break; fi
+            echo "@solar-icons/static@${LATEST} is not downloadable yet (attempt ${attempt}/5)"
+            sleep 30
+          done
+          if ! ls /tmp/solar-icons-static-*.tgz >/dev/null 2>&1; then
+            echo "::error::Could not download @solar-icons/static@${LATEST} from npm."
+            exit 1
+          fi
           tar -xzf /tmp/solar-icons-static-*.tgz -C node_modules/@solar-icons/static --strip-components=1
           php vendor/bin/blade-icons-generate
           php bin/generate-enum.php
-          echo "${{ steps.static.outputs.latest }}" > .static-version
+          echo "${LATEST}" > .static-version
 
-      - name: Detect icon changes
+      # Only the file counts are used here: the bump is decided by the next step.
+      - name: Count icon file changes
         id: detect
         if: steps.static.outputs.update == 'true'
+        shell: bash
         run: |
           git add -A -n > /dev/null 2>&1 || true
           php bin/detect-icon-changes.php >> "$GITHUB_OUTPUT"
-          git add resources/svg/ src/SolarIcon.php .static-version package.json
 
-      # GITHUB_TOKEN pushes do not trigger the separate test workflow.
-      # Verify the regenerated payload here before creating any release tag.
+      - name: Plan the release from the declared intent
+        id: plan
+        shell: bash
+        env:
+          PINNED: ${{ steps.static.outputs.pinned }}
+          LATEST: ${{ steps.static.outputs.latest }}
+          MANUAL_BUMP: ${{ inputs.release }}
+          MANUAL_SUMMARY: ${{ inputs.summary }}
+          ADDED: ${{ steps.detect.outputs.added }}
+          MODIFIED: ${{ steps.detect.outputs.modified }}
+          DELETED: ${{ steps.detect.outputs.deleted }}
+        run: |
+          php bin/plan-release.php \
+            --pinned="${PINNED}" \
+            --upto="${LATEST}" \
+            --bump="${MANUAL_BUMP:-none}" \
+            --summary="${MANUAL_SUMMARY}" \
+            --added="${ADDED:-0}" \
+            --modified="${MODIFIED:-0}" \
+            --deleted="${DELETED:-0}" \
+            --write > plan.out
+          cat plan.out
+          cat plan.out >> "$GITHUB_OUTPUT"
+
+      # GITHUB_TOKEN pull requests do not trigger the other workflows, so the
+      # regenerated payload is verified here, before anything is proposed.
       - name: Verify the regenerated catalog
+        if: steps.plan.outputs.release == 'true'
         run: vendor/bin/phpunit
 
-      - name: Decide bump type
-        id: bump
+      - name: Verify coding standards
+        if: steps.plan.outputs.release == 'true'
+        run: vendor/bin/pint --test
+
+      - name: Propose the release
+        if: steps.plan.outputs.release == 'true' && !inputs.dry_run
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.plan.outputs.version }}
         run: |
-          if [ "${{ inputs.release }}" != "" ] && [ "${{ inputs.release }}" != "none" ]; then
-            echo "type=${{ inputs.release }}" >> "$GITHUB_OUTPUT"
-            if git describe --tags --abbrev=0 >/dev/null 2>&1; then
-              echo "reason=Manual PHP-only release" >> "$GITHUB_OUTPUT"
-            else
-              echo "reason=Initial release, in line with the Solar Icons v2 family" >> "$GITHUB_OUTPUT"
-            fi
-          elif [ "${{ steps.detect.outputs.bump }}" != "" ] && [ "${{ steps.detect.outputs.bump }}" != "none" ]; then
-            echo "type=${{ steps.detect.outputs.bump }}" >> "$GITHUB_OUTPUT"
-            echo "reason=Built from @solar-icons/static ${{ steps.static.outputs.latest }} (+${{ steps.detect.outputs.added }}/~${{ steps.detect.outputs.modified }}/-${{ steps.detect.outputs.deleted }})" >> "$GITHUB_OUTPUT"
-          else
-            echo "type=none" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Compute next version
-        id: version
-        if: steps.bump.outputs.type != 'none'
-        run: |
-          LAST=$(git describe --tags --abbrev=0 2>/dev/null || echo "v2.0.0")
-          # If no tag exists yet, the first release is v2.0.0 itself.
-          if ! git rev-parse "$LAST" >/dev/null 2>&1; then
-            echo "version=2.0.0" >> "$GITHUB_OUTPUT"
-          else
-            VER=${LAST#v}
-            IFS='.' read -r MAJOR MINOR PATCH <<< "$VER"
-            if [ "${{ steps.bump.outputs.type }}" = "minor" ]; then
-              MINOR=$((MINOR + 1)); PATCH=0
-            else
-              PATCH=$((PATCH + 1))
-            fi
-            echo "version=${MAJOR}.${MINOR}.${PATCH}" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Update CHANGELOG and commit
-        if: steps.bump.outputs.type != 'none'
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          ENTRY="## v${VERSION} (${{ steps.bump.outputs.reason }})"
-          python3 - "$ENTRY" "${{ steps.bump.outputs.reason }}" <<'EOF'
-          import re
-          import sys
-
-          entry, reason = sys.argv[1], sys.argv[2]
-          path = 'CHANGELOG.md'
-          content = open(path).read()
-
-          # Move the entries accumulated under "## Unreleased" into the section
-          # being released, so notes always sit under the version they shipped
-          # in, and "## Unreleased" starts empty again.
-          match = re.search(
-              r'^## Unreleased[^\n]*\n(?P<body>.*?)(?=^## |\Z)',
-              content,
-              re.M | re.S,
-          )
-          notes = match.group('body').strip('\n') if match else ''
-
-          section = f'## Unreleased\n\n{entry}\n'
-          if notes:
-              section += f'\n{notes}\n'
-
-          if match:
-              content = content[:match.start()] + section + '\n' + content[match.end():]
-          else:
-              marker = 'will be documented in this file.\n'
-              content = content.replace(marker, marker + '\n' + section, 1)
-
-          open(path, 'w').write(content)
-
-          # Same notes for the GitHub Release body, falling back to the reason.
-          open('release-notes.md', 'w').write((notes or reason) + '\n')
-          EOF
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git switch -C release/next
           git add CHANGELOG.md resources/svg/ src/SolarIcon.php .static-version package.json
-          git commit -m "release: v${VERSION} (${{ steps.bump.outputs.reason }})"
-          git tag "v${VERSION}"
-          git push origin main
-          git push origin "v${VERSION}"
+          git commit -m "release: v${VERSION}"
+          git push --force origin release/next
 
-      - name: Create GitHub Release
-        if: steps.bump.outputs.type != 'none'
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+          {
+            cat release-notes.md
+            printf '\n---\nMerging this pull request tags v%s and publishes it to Packagist.\n' "${VERSION}"
+          } > pr-body.md
+
+          NUMBER=$(gh pr list --head release/next --base main --state open --json number --jq '.[0].number // empty')
+          if [ -n "${NUMBER}" ]; then
+            gh pr edit "${NUMBER}" --title "release: v${VERSION}" --body-file pr-body.md
+          else
+            gh pr create --base main --head release/next --title "release: v${VERSION}" --body-file pr-body.md
+          fi
+
+      - name: Dry run summary
+        if: steps.plan.outputs.release == 'true' && inputs.dry_run
         run: |
-          gh release create "v${{ steps.version.outputs.version }}" \
-            --title "v${{ steps.version.outputs.version }}" \
-            --notes-file release-notes.md
+          echo "Dry run: would propose v${{ steps.plan.outputs.version }} (${{ steps.plan.outputs.bump }})."
+          cat release-notes.md

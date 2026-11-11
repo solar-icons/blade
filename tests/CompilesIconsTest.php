@@ -15,7 +15,7 @@ class CompilesIconsTest extends TestCase
     {
         $result = svg('solar-linear-heart')->toHtml();
 
-        $rawSvg = trim(file_get_contents(__DIR__ . '/../resources/svg/linear-heart.svg'));
+        $rawSvg = trim(file_get_contents(__DIR__.'/../resources/svg/linear-heart.svg'));
         $expected = preg_replace('/^<svg /', '<svg stroke-width="1.5" ', $rawSvg);
 
         $this->assertSame($expected, $result);
@@ -25,7 +25,7 @@ class CompilesIconsTest extends TestCase
     {
         $result = svg('solar-linear-heart', 'w-6 h-6 text-gray-500')->toHtml();
 
-        $rawSvg = trim(file_get_contents(__DIR__ . '/../resources/svg/linear-heart.svg'));
+        $rawSvg = trim(file_get_contents(__DIR__.'/../resources/svg/linear-heart.svg'));
         $expected = preg_replace('/^<svg /', '<svg stroke-width="1.5" class="w-6 h-6 text-gray-500" ', $rawSvg);
 
         $this->assertSame($expected, $result);
@@ -35,7 +35,7 @@ class CompilesIconsTest extends TestCase
     {
         $result = svg('solar-linear-heart', ['style' => 'color: #555'])->toHtml();
 
-        $rawSvg = trim(file_get_contents(__DIR__ . '/../resources/svg/linear-heart.svg'));
+        $rawSvg = trim(file_get_contents(__DIR__.'/../resources/svg/linear-heart.svg'));
         $expected = preg_replace('/^<svg /', '<svg stroke-width="1.5" style="color: #555" ', $rawSvg);
 
         $this->assertSame($expected, $result);
