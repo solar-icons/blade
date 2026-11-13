@@ -4,6 +4,16 @@ All notable changes to `solar-icons/blade` will be documented in this file.
 
 ## Unreleased
 
+## v2.1.0
+
+Built from @solar-icons/static 2.6.0 (+354 added, ~306 modified, -0 removed SVG files).
+
+Fix the secondary tone of duotone icons rendering lighter than intended on about 300 icons (for example `printer` in Bold Duotone). The secondary opacity was applied on the group and again on each element inside it, so it multiplied (0.25 instead of 0.5 by default). It is now applied once per accent layer, so `--solar-secondary-opacity` means what it says.
+
+Expand catalogue to 1,576 icon families (9,456 SVGs):
+
+- Add 59 new icon families across all 6 canonical styles (`Bold`, `BoldDuotone`, `Broken`, `Linear`, `LineDuotone`, `Outline`): `bank`, `factory`, `chart-area`, `chart-candlestick`, `chart-gantt`, `chart-scatter`, `bluetooth-off`, `lightbulb-off`, `monitor-off`, `plug`, `apple`, `burger`, `cake`, `fork-knife`, `ice-cream-cone`, `pizza`, `door-closed`, `git-merge`, `workflow`, `flask`, `microscope`, `bitcoin`, `coins`, `piggy-bank`, `pound`, `rupee`, `yen`, `fish`, `flower`, `mountains`, `sprout`, `tree`, `airplane`, `anchor`, `bicycle`, `ship`, `truck`, `fingerprint`, `wrench`, `highlighter`, `paragraph`, `subscript`, `superscript`, `text-align-center`, `text-align-left`, `text-align-right`, `calendar-check`, `calendar-close`, `pen-tool`, `cursor-click`, `diamond`, `dice`, `flag-off`, `gavel`, `justice-scale`, `megaphone`, `puzzle`, `skull`, and `gallery-off`.
+
 ## v2.0.4 (Built from @solar-icons/static 2.5.0 (+228/~42/-0))
 
 ## v2.0.3 (Built from @solar-icons/static 2.4.0 (+168/~754/-0))
