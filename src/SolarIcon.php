@@ -109,6 +109,7 @@ enum SolarIcon: string
     case BoldBarChair = 'solar-bold-bar-chair';
     case BoldBarcode = 'solar-bold-barcode';
     case BoldBarcodeScan = 'solar-bold-barcode-scan';
+    case BoldBaseball = 'solar-bold-baseball';
     case BoldBasketball = 'solar-bold-basketball';
     case BoldBath = 'solar-bold-bath';
     case BoldBatteryCharge = 'solar-bold-battery-charge';
@@ -128,6 +129,7 @@ enum SolarIcon: string
     case BoldBellOff = 'solar-bold-bell-off';
     case BoldBellRing = 'solar-bold-bell-ring';
     case BoldBenzeneRing = 'solar-bold-benzene-ring';
+    case BoldBicepsFlexed = 'solar-bold-biceps-flexed';
     case BoldBicycle = 'solar-bold-bicycle';
     case BoldBicycling = 'solar-bold-bicycling';
     case BoldBicyclingRound = 'solar-bold-bicycling-round';
@@ -179,9 +181,11 @@ enum SolarIcon: string
     case BoldBoombox = 'solar-bold-boombox';
     case BoldBot = 'solar-bold-bot';
     case BoldBottle = 'solar-bold-bottle';
+    case BoldBowArrow = 'solar-bold-bow-arrow';
     case BoldBowling = 'solar-bold-bowling';
     case BoldBox = 'solar-bold-box';
     case BoldBoxMinimalistic = 'solar-bold-box-minimalistic';
+    case BoldBoxingGlove = 'solar-bold-boxing-glove';
     case BoldBraces = 'solar-bold-braces';
     case BoldBrackets = 'solar-bold-brackets';
     case BoldBrain = 'solar-bold-brain';
@@ -405,6 +409,7 @@ enum SolarIcon: string
     case BoldCpu = 'solar-bold-cpu';
     case BoldCpuBolt = 'solar-bold-cpu-bolt';
     case BoldCreativeCommons = 'solar-bold-creative-commons';
+    case BoldCricket = 'solar-bold-cricket';
     case BoldCrop = 'solar-bold-crop';
     case BoldCropMinimalistic = 'solar-bold-crop-minimalistic';
     case BoldCrown = 'solar-bold-crown';
@@ -569,6 +574,7 @@ enum SolarIcon: string
     case BoldDuotoneBarChair = 'solar-bold-duotone-bar-chair';
     case BoldDuotoneBarcode = 'solar-bold-duotone-barcode';
     case BoldDuotoneBarcodeScan = 'solar-bold-duotone-barcode-scan';
+    case BoldDuotoneBaseball = 'solar-bold-duotone-baseball';
     case BoldDuotoneBasketball = 'solar-bold-duotone-basketball';
     case BoldDuotoneBath = 'solar-bold-duotone-bath';
     case BoldDuotoneBatteryCharge = 'solar-bold-duotone-battery-charge';
@@ -588,6 +594,7 @@ enum SolarIcon: string
     case BoldDuotoneBellOff = 'solar-bold-duotone-bell-off';
     case BoldDuotoneBellRing = 'solar-bold-duotone-bell-ring';
     case BoldDuotoneBenzeneRing = 'solar-bold-duotone-benzene-ring';
+    case BoldDuotoneBicepsFlexed = 'solar-bold-duotone-biceps-flexed';
     case BoldDuotoneBicycle = 'solar-bold-duotone-bicycle';
     case BoldDuotoneBicycling = 'solar-bold-duotone-bicycling';
     case BoldDuotoneBicyclingRound = 'solar-bold-duotone-bicycling-round';
@@ -639,9 +646,11 @@ enum SolarIcon: string
     case BoldDuotoneBoombox = 'solar-bold-duotone-boombox';
     case BoldDuotoneBot = 'solar-bold-duotone-bot';
     case BoldDuotoneBottle = 'solar-bold-duotone-bottle';
+    case BoldDuotoneBowArrow = 'solar-bold-duotone-bow-arrow';
     case BoldDuotoneBowling = 'solar-bold-duotone-bowling';
     case BoldDuotoneBox = 'solar-bold-duotone-box';
     case BoldDuotoneBoxMinimalistic = 'solar-bold-duotone-box-minimalistic';
+    case BoldDuotoneBoxingGlove = 'solar-bold-duotone-boxing-glove';
     case BoldDuotoneBraces = 'solar-bold-duotone-braces';
     case BoldDuotoneBrackets = 'solar-bold-duotone-brackets';
     case BoldDuotoneBrain = 'solar-bold-duotone-brain';
@@ -865,6 +874,7 @@ enum SolarIcon: string
     case BoldDuotoneCpu = 'solar-bold-duotone-cpu';
     case BoldDuotoneCpuBolt = 'solar-bold-duotone-cpu-bolt';
     case BoldDuotoneCreativeCommons = 'solar-bold-duotone-creative-commons';
+    case BoldDuotoneCricket = 'solar-bold-duotone-cricket';
     case BoldDuotoneCrop = 'solar-bold-duotone-crop';
     case BoldDuotoneCropMinimalistic = 'solar-bold-duotone-crop-minimalistic';
     case BoldDuotoneCrown = 'solar-bold-duotone-crown';
@@ -1009,8 +1019,10 @@ enum SolarIcon: string
     case BoldDuotoneFireMinimalistic = 'solar-bold-duotone-fire-minimalistic';
     case BoldDuotoneFireSquare = 'solar-bold-duotone-fire-square';
     case BoldDuotoneFish = 'solar-bold-duotone-fish';
+    case BoldDuotoneFishingRod = 'solar-bold-duotone-fishing-rod';
     case BoldDuotoneFlag = 'solar-bold-duotone-flag';
     case BoldDuotoneFlag2 = 'solar-bold-duotone-flag-2';
+    case BoldDuotoneFlagCheckered = 'solar-bold-duotone-flag-checkered';
     case BoldDuotoneFlagOff = 'solar-bold-duotone-flag-off';
     case BoldDuotoneFlame = 'solar-bold-duotone-flame';
     case BoldDuotoneFlashDrive = 'solar-bold-duotone-flash-drive';
@@ -1054,6 +1066,7 @@ enum SolarIcon: string
     case BoldDuotoneFolderZip = 'solar-bold-duotone-folder-zip';
     case BoldDuotoneFolders = 'solar-bold-duotone-folders';
     case BoldDuotoneFootball = 'solar-bold-duotone-football';
+    case BoldDuotoneFootprints = 'solar-bold-duotone-footprints';
     case BoldDuotoneForbidden = 'solar-bold-duotone-forbidden';
     case BoldDuotoneForbiddenCircle = 'solar-bold-duotone-forbidden-circle';
     case BoldDuotoneForkKnife = 'solar-bold-duotone-fork-knife';
@@ -1159,6 +1172,7 @@ enum SolarIcon: string
     case BoldDuotoneHistory = 'solar-bold-duotone-history';
     case BoldDuotoneHistory2 = 'solar-bold-duotone-history-2';
     case BoldDuotoneHistory3 = 'solar-bold-duotone-history-3';
+    case BoldDuotoneHockey = 'solar-bold-duotone-hockey';
     case BoldDuotoneHome = 'solar-bold-duotone-home';
     case BoldDuotoneHome2 = 'solar-bold-duotone-home-2';
     case BoldDuotoneHomeAdd = 'solar-bold-duotone-home-add';
@@ -1192,9 +1206,12 @@ enum SolarIcon: string
     case BoldDuotoneIntersectMinimalistic = 'solar-bold-duotone-intersect-minimalistic';
     case BoldDuotoneJarOfPills = 'solar-bold-duotone-jar-of-pills';
     case BoldDuotoneJarOfPills2 = 'solar-bold-duotone-jar-of-pills-2';
+    case BoldDuotoneJumpRope = 'solar-bold-duotone-jump-rope';
     case BoldDuotoneJusticeScale = 'solar-bold-duotone-justice-scale';
     case BoldDuotoneKanban = 'solar-bold-duotone-kanban';
     case BoldDuotoneKanbanSquare = 'solar-bold-duotone-kanban-square';
+    case BoldDuotoneKayak = 'solar-bold-duotone-kayak';
+    case BoldDuotoneKettlebell = 'solar-bold-duotone-kettlebell';
     case BoldDuotoneKey = 'solar-bold-duotone-key';
     case BoldDuotoneKeyMinimalistic = 'solar-bold-duotone-key-minimalistic';
     case BoldDuotoneKeyMinimalistic2 = 'solar-bold-duotone-key-minimalistic-2';
@@ -1477,6 +1494,7 @@ enum SolarIcon: string
     case BoldDuotonePin = 'solar-bold-duotone-pin';
     case BoldDuotonePinCircle = 'solar-bold-duotone-pin-circle';
     case BoldDuotonePinList = 'solar-bold-duotone-pin-list';
+    case BoldDuotonePingPong = 'solar-bold-duotone-ping-pong';
     case BoldDuotonePip = 'solar-bold-duotone-pip';
     case BoldDuotonePip2 = 'solar-bold-duotone-pip-2';
     case BoldDuotonePipette = 'solar-bold-duotone-pipette';
@@ -1700,6 +1718,7 @@ enum SolarIcon: string
     case BoldDuotoneSkateboard = 'solar-bold-duotone-skateboard';
     case BoldDuotoneSkateboarding = 'solar-bold-duotone-skateboarding';
     case BoldDuotoneSkateboardingRound = 'solar-bold-duotone-skateboarding-round';
+    case BoldDuotoneSkiing = 'solar-bold-duotone-skiing';
     case BoldDuotoneSkipNext = 'solar-bold-duotone-skip-next';
     case BoldDuotoneSkipPrevious = 'solar-bold-duotone-skip-previous';
     case BoldDuotoneSkirt = 'solar-bold-duotone-skirt';
@@ -1752,6 +1771,8 @@ enum SolarIcon: string
     case BoldDuotoneSpeedometerLow = 'solar-bold-duotone-speedometer-low';
     case BoldDuotoneSpeedometerMax = 'solar-bold-duotone-speedometer-max';
     case BoldDuotoneSpeedometerMiddle = 'solar-bold-duotone-speedometer-middle';
+    case BoldDuotoneSportField = 'solar-bold-duotone-sport-field';
+    case BoldDuotoneSportShoe = 'solar-bold-duotone-sport-shoe';
     case BoldDuotoneSprout = 'solar-bold-duotone-sprout';
     case BoldDuotoneSquareAcademicCap = 'solar-bold-duotone-square-academic-cap';
     case BoldDuotoneSquareAcademicCap2 = 'solar-bold-duotone-square-academic-cap-2';
@@ -1841,6 +1862,7 @@ enum SolarIcon: string
     case BoldDuotoneSuspensionBolt = 'solar-bold-duotone-suspension-bolt';
     case BoldDuotoneSuspensionCross = 'solar-bold-duotone-suspension-cross';
     case BoldDuotoneSwimming = 'solar-bold-duotone-swimming';
+    case BoldDuotoneSwimmingPool = 'solar-bold-duotone-swimming-pool';
     case BoldDuotoneSyringe = 'solar-bold-duotone-syringe';
     case BoldDuotoneTShirt = 'solar-bold-duotone-t-shirt';
     case BoldDuotoneTable = 'solar-bold-duotone-table';
@@ -1860,6 +1882,7 @@ enum SolarIcon: string
     case BoldDuotoneTemperature = 'solar-bold-duotone-temperature';
     case BoldDuotoneTennis = 'solar-bold-duotone-tennis';
     case BoldDuotoneTennis2 = 'solar-bold-duotone-tennis-2';
+    case BoldDuotoneTennisRacket = 'solar-bold-duotone-tennis-racket';
     case BoldDuotoneTestTube = 'solar-bold-duotone-test-tube';
     case BoldDuotoneTestTubeMinimalistic = 'solar-bold-duotone-test-tube-minimalistic';
     case BoldDuotoneTextAlignCenter = 'solar-bold-duotone-text-align-center';
@@ -2020,6 +2043,7 @@ enum SolarIcon: string
     case BoldDuotoneWheel = 'solar-bold-duotone-wheel';
     case BoldDuotoneWheelAngle = 'solar-bold-duotone-wheel-angle';
     case BoldDuotoneWhisk = 'solar-bold-duotone-whisk';
+    case BoldDuotoneWhistle = 'solar-bold-duotone-whistle';
     case BoldDuotoneWiFi = 'solar-bold-duotone-wi-fi';
     case BoldDuotoneWiFiCog = 'solar-bold-duotone-wi-fi-cog';
     case BoldDuotoneWiFiCross = 'solar-bold-duotone-wi-fi-cross';
@@ -2048,6 +2072,7 @@ enum SolarIcon: string
     case BoldDuotoneWrench = 'solar-bold-duotone-wrench';
     case BoldDuotoneXxx = 'solar-bold-duotone-xxx';
     case BoldDuotoneYen = 'solar-bold-duotone-yen';
+    case BoldDuotoneYogaMat = 'solar-bold-duotone-yoga-mat';
     case BoldEarth = 'solar-bold-earth';
     case BoldElectricRefueling = 'solar-bold-electric-refueling';
     case BoldEllipse = 'solar-bold-ellipse';
@@ -2125,8 +2150,10 @@ enum SolarIcon: string
     case BoldFireMinimalistic = 'solar-bold-fire-minimalistic';
     case BoldFireSquare = 'solar-bold-fire-square';
     case BoldFish = 'solar-bold-fish';
+    case BoldFishingRod = 'solar-bold-fishing-rod';
     case BoldFlag = 'solar-bold-flag';
     case BoldFlag2 = 'solar-bold-flag-2';
+    case BoldFlagCheckered = 'solar-bold-flag-checkered';
     case BoldFlagOff = 'solar-bold-flag-off';
     case BoldFlame = 'solar-bold-flame';
     case BoldFlashDrive = 'solar-bold-flash-drive';
@@ -2170,6 +2197,7 @@ enum SolarIcon: string
     case BoldFolderZip = 'solar-bold-folder-zip';
     case BoldFolders = 'solar-bold-folders';
     case BoldFootball = 'solar-bold-football';
+    case BoldFootprints = 'solar-bold-footprints';
     case BoldForbidden = 'solar-bold-forbidden';
     case BoldForbiddenCircle = 'solar-bold-forbidden-circle';
     case BoldForkKnife = 'solar-bold-fork-knife';
@@ -2275,6 +2303,7 @@ enum SolarIcon: string
     case BoldHistory = 'solar-bold-history';
     case BoldHistory2 = 'solar-bold-history-2';
     case BoldHistory3 = 'solar-bold-history-3';
+    case BoldHockey = 'solar-bold-hockey';
     case BoldHome = 'solar-bold-home';
     case BoldHome2 = 'solar-bold-home-2';
     case BoldHomeAdd = 'solar-bold-home-add';
@@ -2308,9 +2337,12 @@ enum SolarIcon: string
     case BoldIntersectMinimalistic = 'solar-bold-intersect-minimalistic';
     case BoldJarOfPills = 'solar-bold-jar-of-pills';
     case BoldJarOfPills2 = 'solar-bold-jar-of-pills-2';
+    case BoldJumpRope = 'solar-bold-jump-rope';
     case BoldJusticeScale = 'solar-bold-justice-scale';
     case BoldKanban = 'solar-bold-kanban';
     case BoldKanbanSquare = 'solar-bold-kanban-square';
+    case BoldKayak = 'solar-bold-kayak';
+    case BoldKettlebell = 'solar-bold-kettlebell';
     case BoldKey = 'solar-bold-key';
     case BoldKeyMinimalistic = 'solar-bold-key-minimalistic';
     case BoldKeyMinimalistic2 = 'solar-bold-key-minimalistic-2';
@@ -2593,6 +2625,7 @@ enum SolarIcon: string
     case BoldPin = 'solar-bold-pin';
     case BoldPinCircle = 'solar-bold-pin-circle';
     case BoldPinList = 'solar-bold-pin-list';
+    case BoldPingPong = 'solar-bold-ping-pong';
     case BoldPip = 'solar-bold-pip';
     case BoldPip2 = 'solar-bold-pip-2';
     case BoldPipette = 'solar-bold-pipette';
@@ -2816,6 +2849,7 @@ enum SolarIcon: string
     case BoldSkateboard = 'solar-bold-skateboard';
     case BoldSkateboarding = 'solar-bold-skateboarding';
     case BoldSkateboardingRound = 'solar-bold-skateboarding-round';
+    case BoldSkiing = 'solar-bold-skiing';
     case BoldSkipNext = 'solar-bold-skip-next';
     case BoldSkipPrevious = 'solar-bold-skip-previous';
     case BoldSkirt = 'solar-bold-skirt';
@@ -2868,6 +2902,8 @@ enum SolarIcon: string
     case BoldSpeedometerLow = 'solar-bold-speedometer-low';
     case BoldSpeedometerMax = 'solar-bold-speedometer-max';
     case BoldSpeedometerMiddle = 'solar-bold-speedometer-middle';
+    case BoldSportField = 'solar-bold-sport-field';
+    case BoldSportShoe = 'solar-bold-sport-shoe';
     case BoldSprout = 'solar-bold-sprout';
     case BoldSquareAcademicCap = 'solar-bold-square-academic-cap';
     case BoldSquareAcademicCap2 = 'solar-bold-square-academic-cap-2';
@@ -2957,6 +2993,7 @@ enum SolarIcon: string
     case BoldSuspensionBolt = 'solar-bold-suspension-bolt';
     case BoldSuspensionCross = 'solar-bold-suspension-cross';
     case BoldSwimming = 'solar-bold-swimming';
+    case BoldSwimmingPool = 'solar-bold-swimming-pool';
     case BoldSyringe = 'solar-bold-syringe';
     case BoldTShirt = 'solar-bold-t-shirt';
     case BoldTable = 'solar-bold-table';
@@ -2976,6 +3013,7 @@ enum SolarIcon: string
     case BoldTemperature = 'solar-bold-temperature';
     case BoldTennis = 'solar-bold-tennis';
     case BoldTennis2 = 'solar-bold-tennis-2';
+    case BoldTennisRacket = 'solar-bold-tennis-racket';
     case BoldTestTube = 'solar-bold-test-tube';
     case BoldTestTubeMinimalistic = 'solar-bold-test-tube-minimalistic';
     case BoldTextAlignCenter = 'solar-bold-text-align-center';
@@ -3136,6 +3174,7 @@ enum SolarIcon: string
     case BoldWheel = 'solar-bold-wheel';
     case BoldWheelAngle = 'solar-bold-wheel-angle';
     case BoldWhisk = 'solar-bold-whisk';
+    case BoldWhistle = 'solar-bold-whistle';
     case BoldWiFi = 'solar-bold-wi-fi';
     case BoldWiFiCog = 'solar-bold-wi-fi-cog';
     case BoldWiFiCross = 'solar-bold-wi-fi-cross';
@@ -3164,6 +3203,7 @@ enum SolarIcon: string
     case BoldWrench = 'solar-bold-wrench';
     case BoldXxx = 'solar-bold-xxx';
     case BoldYen = 'solar-bold-yen';
+    case BoldYogaMat = 'solar-bold-yoga-mat';
     case BrokenAccessibility = 'solar-broken-accessibility';
     case BrokenAdd = 'solar-broken-add';
     case BrokenAddCircle = 'solar-broken-add-circle';
@@ -3261,6 +3301,7 @@ enum SolarIcon: string
     case BrokenBarChair = 'solar-broken-bar-chair';
     case BrokenBarcode = 'solar-broken-barcode';
     case BrokenBarcodeScan = 'solar-broken-barcode-scan';
+    case BrokenBaseball = 'solar-broken-baseball';
     case BrokenBasketball = 'solar-broken-basketball';
     case BrokenBath = 'solar-broken-bath';
     case BrokenBatteryCharge = 'solar-broken-battery-charge';
@@ -3280,6 +3321,7 @@ enum SolarIcon: string
     case BrokenBellOff = 'solar-broken-bell-off';
     case BrokenBellRing = 'solar-broken-bell-ring';
     case BrokenBenzeneRing = 'solar-broken-benzene-ring';
+    case BrokenBicepsFlexed = 'solar-broken-biceps-flexed';
     case BrokenBicycle = 'solar-broken-bicycle';
     case BrokenBicycling = 'solar-broken-bicycling';
     case BrokenBicyclingRound = 'solar-broken-bicycling-round';
@@ -3331,9 +3373,11 @@ enum SolarIcon: string
     case BrokenBoombox = 'solar-broken-boombox';
     case BrokenBot = 'solar-broken-bot';
     case BrokenBottle = 'solar-broken-bottle';
+    case BrokenBowArrow = 'solar-broken-bow-arrow';
     case BrokenBowling = 'solar-broken-bowling';
     case BrokenBox = 'solar-broken-box';
     case BrokenBoxMinimalistic = 'solar-broken-box-minimalistic';
+    case BrokenBoxingGlove = 'solar-broken-boxing-glove';
     case BrokenBraces = 'solar-broken-braces';
     case BrokenBrackets = 'solar-broken-brackets';
     case BrokenBrain = 'solar-broken-brain';
@@ -3557,6 +3601,7 @@ enum SolarIcon: string
     case BrokenCpu = 'solar-broken-cpu';
     case BrokenCpuBolt = 'solar-broken-cpu-bolt';
     case BrokenCreativeCommons = 'solar-broken-creative-commons';
+    case BrokenCricket = 'solar-broken-cricket';
     case BrokenCrop = 'solar-broken-crop';
     case BrokenCropMinimalistic = 'solar-broken-crop-minimalistic';
     case BrokenCrown = 'solar-broken-crown';
@@ -3701,8 +3746,10 @@ enum SolarIcon: string
     case BrokenFireMinimalistic = 'solar-broken-fire-minimalistic';
     case BrokenFireSquare = 'solar-broken-fire-square';
     case BrokenFish = 'solar-broken-fish';
+    case BrokenFishingRod = 'solar-broken-fishing-rod';
     case BrokenFlag = 'solar-broken-flag';
     case BrokenFlag2 = 'solar-broken-flag-2';
+    case BrokenFlagCheckered = 'solar-broken-flag-checkered';
     case BrokenFlagOff = 'solar-broken-flag-off';
     case BrokenFlame = 'solar-broken-flame';
     case BrokenFlashDrive = 'solar-broken-flash-drive';
@@ -3746,6 +3793,7 @@ enum SolarIcon: string
     case BrokenFolderZip = 'solar-broken-folder-zip';
     case BrokenFolders = 'solar-broken-folders';
     case BrokenFootball = 'solar-broken-football';
+    case BrokenFootprints = 'solar-broken-footprints';
     case BrokenForbidden = 'solar-broken-forbidden';
     case BrokenForbiddenCircle = 'solar-broken-forbidden-circle';
     case BrokenForkKnife = 'solar-broken-fork-knife';
@@ -3851,6 +3899,7 @@ enum SolarIcon: string
     case BrokenHistory = 'solar-broken-history';
     case BrokenHistory2 = 'solar-broken-history-2';
     case BrokenHistory3 = 'solar-broken-history-3';
+    case BrokenHockey = 'solar-broken-hockey';
     case BrokenHome = 'solar-broken-home';
     case BrokenHome2 = 'solar-broken-home-2';
     case BrokenHomeAdd = 'solar-broken-home-add';
@@ -3884,9 +3933,12 @@ enum SolarIcon: string
     case BrokenIntersectMinimalistic = 'solar-broken-intersect-minimalistic';
     case BrokenJarOfPills = 'solar-broken-jar-of-pills';
     case BrokenJarOfPills2 = 'solar-broken-jar-of-pills-2';
+    case BrokenJumpRope = 'solar-broken-jump-rope';
     case BrokenJusticeScale = 'solar-broken-justice-scale';
     case BrokenKanban = 'solar-broken-kanban';
     case BrokenKanbanSquare = 'solar-broken-kanban-square';
+    case BrokenKayak = 'solar-broken-kayak';
+    case BrokenKettlebell = 'solar-broken-kettlebell';
     case BrokenKey = 'solar-broken-key';
     case BrokenKeyMinimalistic = 'solar-broken-key-minimalistic';
     case BrokenKeyMinimalistic2 = 'solar-broken-key-minimalistic-2';
@@ -4169,6 +4221,7 @@ enum SolarIcon: string
     case BrokenPin = 'solar-broken-pin';
     case BrokenPinCircle = 'solar-broken-pin-circle';
     case BrokenPinList = 'solar-broken-pin-list';
+    case BrokenPingPong = 'solar-broken-ping-pong';
     case BrokenPip = 'solar-broken-pip';
     case BrokenPip2 = 'solar-broken-pip-2';
     case BrokenPipette = 'solar-broken-pipette';
@@ -4392,6 +4445,7 @@ enum SolarIcon: string
     case BrokenSkateboard = 'solar-broken-skateboard';
     case BrokenSkateboarding = 'solar-broken-skateboarding';
     case BrokenSkateboardingRound = 'solar-broken-skateboarding-round';
+    case BrokenSkiing = 'solar-broken-skiing';
     case BrokenSkipNext = 'solar-broken-skip-next';
     case BrokenSkipPrevious = 'solar-broken-skip-previous';
     case BrokenSkirt = 'solar-broken-skirt';
@@ -4444,6 +4498,8 @@ enum SolarIcon: string
     case BrokenSpeedometerLow = 'solar-broken-speedometer-low';
     case BrokenSpeedometerMax = 'solar-broken-speedometer-max';
     case BrokenSpeedometerMiddle = 'solar-broken-speedometer-middle';
+    case BrokenSportField = 'solar-broken-sport-field';
+    case BrokenSportShoe = 'solar-broken-sport-shoe';
     case BrokenSprout = 'solar-broken-sprout';
     case BrokenSquareAcademicCap = 'solar-broken-square-academic-cap';
     case BrokenSquareAcademicCap2 = 'solar-broken-square-academic-cap-2';
@@ -4533,6 +4589,7 @@ enum SolarIcon: string
     case BrokenSuspensionBolt = 'solar-broken-suspension-bolt';
     case BrokenSuspensionCross = 'solar-broken-suspension-cross';
     case BrokenSwimming = 'solar-broken-swimming';
+    case BrokenSwimmingPool = 'solar-broken-swimming-pool';
     case BrokenSyringe = 'solar-broken-syringe';
     case BrokenTShirt = 'solar-broken-t-shirt';
     case BrokenTable = 'solar-broken-table';
@@ -4552,6 +4609,7 @@ enum SolarIcon: string
     case BrokenTemperature = 'solar-broken-temperature';
     case BrokenTennis = 'solar-broken-tennis';
     case BrokenTennis2 = 'solar-broken-tennis-2';
+    case BrokenTennisRacket = 'solar-broken-tennis-racket';
     case BrokenTestTube = 'solar-broken-test-tube';
     case BrokenTestTubeMinimalistic = 'solar-broken-test-tube-minimalistic';
     case BrokenTextAlignCenter = 'solar-broken-text-align-center';
@@ -4712,6 +4770,7 @@ enum SolarIcon: string
     case BrokenWheel = 'solar-broken-wheel';
     case BrokenWheelAngle = 'solar-broken-wheel-angle';
     case BrokenWhisk = 'solar-broken-whisk';
+    case BrokenWhistle = 'solar-broken-whistle';
     case BrokenWiFi = 'solar-broken-wi-fi';
     case BrokenWiFiCog = 'solar-broken-wi-fi-cog';
     case BrokenWiFiCross = 'solar-broken-wi-fi-cross';
@@ -4740,6 +4799,7 @@ enum SolarIcon: string
     case BrokenWrench = 'solar-broken-wrench';
     case BrokenXxx = 'solar-broken-xxx';
     case BrokenYen = 'solar-broken-yen';
+    case BrokenYogaMat = 'solar-broken-yoga-mat';
     case LineDuotoneAccessibility = 'solar-line-duotone-accessibility';
     case LineDuotoneAdd = 'solar-line-duotone-add';
     case LineDuotoneAddCircle = 'solar-line-duotone-add-circle';
@@ -4837,6 +4897,7 @@ enum SolarIcon: string
     case LineDuotoneBarChair = 'solar-line-duotone-bar-chair';
     case LineDuotoneBarcode = 'solar-line-duotone-barcode';
     case LineDuotoneBarcodeScan = 'solar-line-duotone-barcode-scan';
+    case LineDuotoneBaseball = 'solar-line-duotone-baseball';
     case LineDuotoneBasketball = 'solar-line-duotone-basketball';
     case LineDuotoneBath = 'solar-line-duotone-bath';
     case LineDuotoneBatteryCharge = 'solar-line-duotone-battery-charge';
@@ -4856,6 +4917,7 @@ enum SolarIcon: string
     case LineDuotoneBellOff = 'solar-line-duotone-bell-off';
     case LineDuotoneBellRing = 'solar-line-duotone-bell-ring';
     case LineDuotoneBenzeneRing = 'solar-line-duotone-benzene-ring';
+    case LineDuotoneBicepsFlexed = 'solar-line-duotone-biceps-flexed';
     case LineDuotoneBicycle = 'solar-line-duotone-bicycle';
     case LineDuotoneBicycling = 'solar-line-duotone-bicycling';
     case LineDuotoneBicyclingRound = 'solar-line-duotone-bicycling-round';
@@ -4907,9 +4969,11 @@ enum SolarIcon: string
     case LineDuotoneBoombox = 'solar-line-duotone-boombox';
     case LineDuotoneBot = 'solar-line-duotone-bot';
     case LineDuotoneBottle = 'solar-line-duotone-bottle';
+    case LineDuotoneBowArrow = 'solar-line-duotone-bow-arrow';
     case LineDuotoneBowling = 'solar-line-duotone-bowling';
     case LineDuotoneBox = 'solar-line-duotone-box';
     case LineDuotoneBoxMinimalistic = 'solar-line-duotone-box-minimalistic';
+    case LineDuotoneBoxingGlove = 'solar-line-duotone-boxing-glove';
     case LineDuotoneBraces = 'solar-line-duotone-braces';
     case LineDuotoneBrackets = 'solar-line-duotone-brackets';
     case LineDuotoneBrain = 'solar-line-duotone-brain';
@@ -5133,6 +5197,7 @@ enum SolarIcon: string
     case LineDuotoneCpu = 'solar-line-duotone-cpu';
     case LineDuotoneCpuBolt = 'solar-line-duotone-cpu-bolt';
     case LineDuotoneCreativeCommons = 'solar-line-duotone-creative-commons';
+    case LineDuotoneCricket = 'solar-line-duotone-cricket';
     case LineDuotoneCrop = 'solar-line-duotone-crop';
     case LineDuotoneCropMinimalistic = 'solar-line-duotone-crop-minimalistic';
     case LineDuotoneCrown = 'solar-line-duotone-crown';
@@ -5277,8 +5342,10 @@ enum SolarIcon: string
     case LineDuotoneFireMinimalistic = 'solar-line-duotone-fire-minimalistic';
     case LineDuotoneFireSquare = 'solar-line-duotone-fire-square';
     case LineDuotoneFish = 'solar-line-duotone-fish';
+    case LineDuotoneFishingRod = 'solar-line-duotone-fishing-rod';
     case LineDuotoneFlag = 'solar-line-duotone-flag';
     case LineDuotoneFlag2 = 'solar-line-duotone-flag-2';
+    case LineDuotoneFlagCheckered = 'solar-line-duotone-flag-checkered';
     case LineDuotoneFlagOff = 'solar-line-duotone-flag-off';
     case LineDuotoneFlame = 'solar-line-duotone-flame';
     case LineDuotoneFlashDrive = 'solar-line-duotone-flash-drive';
@@ -5322,6 +5389,7 @@ enum SolarIcon: string
     case LineDuotoneFolderZip = 'solar-line-duotone-folder-zip';
     case LineDuotoneFolders = 'solar-line-duotone-folders';
     case LineDuotoneFootball = 'solar-line-duotone-football';
+    case LineDuotoneFootprints = 'solar-line-duotone-footprints';
     case LineDuotoneForbidden = 'solar-line-duotone-forbidden';
     case LineDuotoneForbiddenCircle = 'solar-line-duotone-forbidden-circle';
     case LineDuotoneForkKnife = 'solar-line-duotone-fork-knife';
@@ -5427,6 +5495,7 @@ enum SolarIcon: string
     case LineDuotoneHistory = 'solar-line-duotone-history';
     case LineDuotoneHistory2 = 'solar-line-duotone-history-2';
     case LineDuotoneHistory3 = 'solar-line-duotone-history-3';
+    case LineDuotoneHockey = 'solar-line-duotone-hockey';
     case LineDuotoneHome = 'solar-line-duotone-home';
     case LineDuotoneHome2 = 'solar-line-duotone-home-2';
     case LineDuotoneHomeAdd = 'solar-line-duotone-home-add';
@@ -5460,9 +5529,12 @@ enum SolarIcon: string
     case LineDuotoneIntersectMinimalistic = 'solar-line-duotone-intersect-minimalistic';
     case LineDuotoneJarOfPills = 'solar-line-duotone-jar-of-pills';
     case LineDuotoneJarOfPills2 = 'solar-line-duotone-jar-of-pills-2';
+    case LineDuotoneJumpRope = 'solar-line-duotone-jump-rope';
     case LineDuotoneJusticeScale = 'solar-line-duotone-justice-scale';
     case LineDuotoneKanban = 'solar-line-duotone-kanban';
     case LineDuotoneKanbanSquare = 'solar-line-duotone-kanban-square';
+    case LineDuotoneKayak = 'solar-line-duotone-kayak';
+    case LineDuotoneKettlebell = 'solar-line-duotone-kettlebell';
     case LineDuotoneKey = 'solar-line-duotone-key';
     case LineDuotoneKeyMinimalistic = 'solar-line-duotone-key-minimalistic';
     case LineDuotoneKeyMinimalistic2 = 'solar-line-duotone-key-minimalistic-2';
@@ -5745,6 +5817,7 @@ enum SolarIcon: string
     case LineDuotonePin = 'solar-line-duotone-pin';
     case LineDuotonePinCircle = 'solar-line-duotone-pin-circle';
     case LineDuotonePinList = 'solar-line-duotone-pin-list';
+    case LineDuotonePingPong = 'solar-line-duotone-ping-pong';
     case LineDuotonePip = 'solar-line-duotone-pip';
     case LineDuotonePip2 = 'solar-line-duotone-pip-2';
     case LineDuotonePipette = 'solar-line-duotone-pipette';
@@ -5968,6 +6041,7 @@ enum SolarIcon: string
     case LineDuotoneSkateboard = 'solar-line-duotone-skateboard';
     case LineDuotoneSkateboarding = 'solar-line-duotone-skateboarding';
     case LineDuotoneSkateboardingRound = 'solar-line-duotone-skateboarding-round';
+    case LineDuotoneSkiing = 'solar-line-duotone-skiing';
     case LineDuotoneSkipNext = 'solar-line-duotone-skip-next';
     case LineDuotoneSkipPrevious = 'solar-line-duotone-skip-previous';
     case LineDuotoneSkirt = 'solar-line-duotone-skirt';
@@ -6020,6 +6094,8 @@ enum SolarIcon: string
     case LineDuotoneSpeedometerLow = 'solar-line-duotone-speedometer-low';
     case LineDuotoneSpeedometerMax = 'solar-line-duotone-speedometer-max';
     case LineDuotoneSpeedometerMiddle = 'solar-line-duotone-speedometer-middle';
+    case LineDuotoneSportField = 'solar-line-duotone-sport-field';
+    case LineDuotoneSportShoe = 'solar-line-duotone-sport-shoe';
     case LineDuotoneSprout = 'solar-line-duotone-sprout';
     case LineDuotoneSquareAcademicCap = 'solar-line-duotone-square-academic-cap';
     case LineDuotoneSquareAcademicCap2 = 'solar-line-duotone-square-academic-cap-2';
@@ -6109,6 +6185,7 @@ enum SolarIcon: string
     case LineDuotoneSuspensionBolt = 'solar-line-duotone-suspension-bolt';
     case LineDuotoneSuspensionCross = 'solar-line-duotone-suspension-cross';
     case LineDuotoneSwimming = 'solar-line-duotone-swimming';
+    case LineDuotoneSwimmingPool = 'solar-line-duotone-swimming-pool';
     case LineDuotoneSyringe = 'solar-line-duotone-syringe';
     case LineDuotoneTShirt = 'solar-line-duotone-t-shirt';
     case LineDuotoneTable = 'solar-line-duotone-table';
@@ -6128,6 +6205,7 @@ enum SolarIcon: string
     case LineDuotoneTemperature = 'solar-line-duotone-temperature';
     case LineDuotoneTennis = 'solar-line-duotone-tennis';
     case LineDuotoneTennis2 = 'solar-line-duotone-tennis-2';
+    case LineDuotoneTennisRacket = 'solar-line-duotone-tennis-racket';
     case LineDuotoneTestTube = 'solar-line-duotone-test-tube';
     case LineDuotoneTestTubeMinimalistic = 'solar-line-duotone-test-tube-minimalistic';
     case LineDuotoneTextAlignCenter = 'solar-line-duotone-text-align-center';
@@ -6288,6 +6366,7 @@ enum SolarIcon: string
     case LineDuotoneWheel = 'solar-line-duotone-wheel';
     case LineDuotoneWheelAngle = 'solar-line-duotone-wheel-angle';
     case LineDuotoneWhisk = 'solar-line-duotone-whisk';
+    case LineDuotoneWhistle = 'solar-line-duotone-whistle';
     case LineDuotoneWiFi = 'solar-line-duotone-wi-fi';
     case LineDuotoneWiFiCog = 'solar-line-duotone-wi-fi-cog';
     case LineDuotoneWiFiCross = 'solar-line-duotone-wi-fi-cross';
@@ -6316,6 +6395,7 @@ enum SolarIcon: string
     case LineDuotoneWrench = 'solar-line-duotone-wrench';
     case LineDuotoneXxx = 'solar-line-duotone-xxx';
     case LineDuotoneYen = 'solar-line-duotone-yen';
+    case LineDuotoneYogaMat = 'solar-line-duotone-yoga-mat';
     case LinearAccessibility = 'solar-linear-accessibility';
     case LinearAdd = 'solar-linear-add';
     case LinearAddCircle = 'solar-linear-add-circle';
@@ -6413,6 +6493,7 @@ enum SolarIcon: string
     case LinearBarChair = 'solar-linear-bar-chair';
     case LinearBarcode = 'solar-linear-barcode';
     case LinearBarcodeScan = 'solar-linear-barcode-scan';
+    case LinearBaseball = 'solar-linear-baseball';
     case LinearBasketball = 'solar-linear-basketball';
     case LinearBath = 'solar-linear-bath';
     case LinearBatteryCharge = 'solar-linear-battery-charge';
@@ -6432,6 +6513,7 @@ enum SolarIcon: string
     case LinearBellOff = 'solar-linear-bell-off';
     case LinearBellRing = 'solar-linear-bell-ring';
     case LinearBenzeneRing = 'solar-linear-benzene-ring';
+    case LinearBicepsFlexed = 'solar-linear-biceps-flexed';
     case LinearBicycle = 'solar-linear-bicycle';
     case LinearBicycling = 'solar-linear-bicycling';
     case LinearBicyclingRound = 'solar-linear-bicycling-round';
@@ -6483,9 +6565,11 @@ enum SolarIcon: string
     case LinearBoombox = 'solar-linear-boombox';
     case LinearBot = 'solar-linear-bot';
     case LinearBottle = 'solar-linear-bottle';
+    case LinearBowArrow = 'solar-linear-bow-arrow';
     case LinearBowling = 'solar-linear-bowling';
     case LinearBox = 'solar-linear-box';
     case LinearBoxMinimalistic = 'solar-linear-box-minimalistic';
+    case LinearBoxingGlove = 'solar-linear-boxing-glove';
     case LinearBraces = 'solar-linear-braces';
     case LinearBrackets = 'solar-linear-brackets';
     case LinearBrain = 'solar-linear-brain';
@@ -6709,6 +6793,7 @@ enum SolarIcon: string
     case LinearCpu = 'solar-linear-cpu';
     case LinearCpuBolt = 'solar-linear-cpu-bolt';
     case LinearCreativeCommons = 'solar-linear-creative-commons';
+    case LinearCricket = 'solar-linear-cricket';
     case LinearCrop = 'solar-linear-crop';
     case LinearCropMinimalistic = 'solar-linear-crop-minimalistic';
     case LinearCrown = 'solar-linear-crown';
@@ -6853,8 +6938,10 @@ enum SolarIcon: string
     case LinearFireMinimalistic = 'solar-linear-fire-minimalistic';
     case LinearFireSquare = 'solar-linear-fire-square';
     case LinearFish = 'solar-linear-fish';
+    case LinearFishingRod = 'solar-linear-fishing-rod';
     case LinearFlag = 'solar-linear-flag';
     case LinearFlag2 = 'solar-linear-flag-2';
+    case LinearFlagCheckered = 'solar-linear-flag-checkered';
     case LinearFlagOff = 'solar-linear-flag-off';
     case LinearFlame = 'solar-linear-flame';
     case LinearFlashDrive = 'solar-linear-flash-drive';
@@ -6898,6 +6985,7 @@ enum SolarIcon: string
     case LinearFolderZip = 'solar-linear-folder-zip';
     case LinearFolders = 'solar-linear-folders';
     case LinearFootball = 'solar-linear-football';
+    case LinearFootprints = 'solar-linear-footprints';
     case LinearForbidden = 'solar-linear-forbidden';
     case LinearForbiddenCircle = 'solar-linear-forbidden-circle';
     case LinearForkKnife = 'solar-linear-fork-knife';
@@ -7003,6 +7091,7 @@ enum SolarIcon: string
     case LinearHistory = 'solar-linear-history';
     case LinearHistory2 = 'solar-linear-history-2';
     case LinearHistory3 = 'solar-linear-history-3';
+    case LinearHockey = 'solar-linear-hockey';
     case LinearHome = 'solar-linear-home';
     case LinearHome2 = 'solar-linear-home-2';
     case LinearHomeAdd = 'solar-linear-home-add';
@@ -7036,9 +7125,12 @@ enum SolarIcon: string
     case LinearIntersectMinimalistic = 'solar-linear-intersect-minimalistic';
     case LinearJarOfPills = 'solar-linear-jar-of-pills';
     case LinearJarOfPills2 = 'solar-linear-jar-of-pills-2';
+    case LinearJumpRope = 'solar-linear-jump-rope';
     case LinearJusticeScale = 'solar-linear-justice-scale';
     case LinearKanban = 'solar-linear-kanban';
     case LinearKanbanSquare = 'solar-linear-kanban-square';
+    case LinearKayak = 'solar-linear-kayak';
+    case LinearKettlebell = 'solar-linear-kettlebell';
     case LinearKey = 'solar-linear-key';
     case LinearKeyMinimalistic = 'solar-linear-key-minimalistic';
     case LinearKeyMinimalistic2 = 'solar-linear-key-minimalistic-2';
@@ -7321,6 +7413,7 @@ enum SolarIcon: string
     case LinearPin = 'solar-linear-pin';
     case LinearPinCircle = 'solar-linear-pin-circle';
     case LinearPinList = 'solar-linear-pin-list';
+    case LinearPingPong = 'solar-linear-ping-pong';
     case LinearPip = 'solar-linear-pip';
     case LinearPip2 = 'solar-linear-pip-2';
     case LinearPipette = 'solar-linear-pipette';
@@ -7544,6 +7637,7 @@ enum SolarIcon: string
     case LinearSkateboard = 'solar-linear-skateboard';
     case LinearSkateboarding = 'solar-linear-skateboarding';
     case LinearSkateboardingRound = 'solar-linear-skateboarding-round';
+    case LinearSkiing = 'solar-linear-skiing';
     case LinearSkipNext = 'solar-linear-skip-next';
     case LinearSkipPrevious = 'solar-linear-skip-previous';
     case LinearSkirt = 'solar-linear-skirt';
@@ -7596,6 +7690,8 @@ enum SolarIcon: string
     case LinearSpeedometerLow = 'solar-linear-speedometer-low';
     case LinearSpeedometerMax = 'solar-linear-speedometer-max';
     case LinearSpeedometerMiddle = 'solar-linear-speedometer-middle';
+    case LinearSportField = 'solar-linear-sport-field';
+    case LinearSportShoe = 'solar-linear-sport-shoe';
     case LinearSprout = 'solar-linear-sprout';
     case LinearSquareAcademicCap = 'solar-linear-square-academic-cap';
     case LinearSquareAcademicCap2 = 'solar-linear-square-academic-cap-2';
@@ -7685,6 +7781,7 @@ enum SolarIcon: string
     case LinearSuspensionBolt = 'solar-linear-suspension-bolt';
     case LinearSuspensionCross = 'solar-linear-suspension-cross';
     case LinearSwimming = 'solar-linear-swimming';
+    case LinearSwimmingPool = 'solar-linear-swimming-pool';
     case LinearSyringe = 'solar-linear-syringe';
     case LinearTShirt = 'solar-linear-t-shirt';
     case LinearTable = 'solar-linear-table';
@@ -7704,6 +7801,7 @@ enum SolarIcon: string
     case LinearTemperature = 'solar-linear-temperature';
     case LinearTennis = 'solar-linear-tennis';
     case LinearTennis2 = 'solar-linear-tennis-2';
+    case LinearTennisRacket = 'solar-linear-tennis-racket';
     case LinearTestTube = 'solar-linear-test-tube';
     case LinearTestTubeMinimalistic = 'solar-linear-test-tube-minimalistic';
     case LinearTextAlignCenter = 'solar-linear-text-align-center';
@@ -7864,6 +7962,7 @@ enum SolarIcon: string
     case LinearWheel = 'solar-linear-wheel';
     case LinearWheelAngle = 'solar-linear-wheel-angle';
     case LinearWhisk = 'solar-linear-whisk';
+    case LinearWhistle = 'solar-linear-whistle';
     case LinearWiFi = 'solar-linear-wi-fi';
     case LinearWiFiCog = 'solar-linear-wi-fi-cog';
     case LinearWiFiCross = 'solar-linear-wi-fi-cross';
@@ -7892,6 +7991,7 @@ enum SolarIcon: string
     case LinearWrench = 'solar-linear-wrench';
     case LinearXxx = 'solar-linear-xxx';
     case LinearYen = 'solar-linear-yen';
+    case LinearYogaMat = 'solar-linear-yoga-mat';
     case OutlineAccessibility = 'solar-outline-accessibility';
     case OutlineAdd = 'solar-outline-add';
     case OutlineAddCircle = 'solar-outline-add-circle';
@@ -7989,6 +8089,7 @@ enum SolarIcon: string
     case OutlineBarChair = 'solar-outline-bar-chair';
     case OutlineBarcode = 'solar-outline-barcode';
     case OutlineBarcodeScan = 'solar-outline-barcode-scan';
+    case OutlineBaseball = 'solar-outline-baseball';
     case OutlineBasketball = 'solar-outline-basketball';
     case OutlineBath = 'solar-outline-bath';
     case OutlineBatteryCharge = 'solar-outline-battery-charge';
@@ -8008,6 +8109,7 @@ enum SolarIcon: string
     case OutlineBellOff = 'solar-outline-bell-off';
     case OutlineBellRing = 'solar-outline-bell-ring';
     case OutlineBenzeneRing = 'solar-outline-benzene-ring';
+    case OutlineBicepsFlexed = 'solar-outline-biceps-flexed';
     case OutlineBicycle = 'solar-outline-bicycle';
     case OutlineBicycling = 'solar-outline-bicycling';
     case OutlineBicyclingRound = 'solar-outline-bicycling-round';
@@ -8059,9 +8161,11 @@ enum SolarIcon: string
     case OutlineBoombox = 'solar-outline-boombox';
     case OutlineBot = 'solar-outline-bot';
     case OutlineBottle = 'solar-outline-bottle';
+    case OutlineBowArrow = 'solar-outline-bow-arrow';
     case OutlineBowling = 'solar-outline-bowling';
     case OutlineBox = 'solar-outline-box';
     case OutlineBoxMinimalistic = 'solar-outline-box-minimalistic';
+    case OutlineBoxingGlove = 'solar-outline-boxing-glove';
     case OutlineBraces = 'solar-outline-braces';
     case OutlineBrackets = 'solar-outline-brackets';
     case OutlineBrain = 'solar-outline-brain';
@@ -8285,6 +8389,7 @@ enum SolarIcon: string
     case OutlineCpu = 'solar-outline-cpu';
     case OutlineCpuBolt = 'solar-outline-cpu-bolt';
     case OutlineCreativeCommons = 'solar-outline-creative-commons';
+    case OutlineCricket = 'solar-outline-cricket';
     case OutlineCrop = 'solar-outline-crop';
     case OutlineCropMinimalistic = 'solar-outline-crop-minimalistic';
     case OutlineCrown = 'solar-outline-crown';
@@ -8429,8 +8534,10 @@ enum SolarIcon: string
     case OutlineFireMinimalistic = 'solar-outline-fire-minimalistic';
     case OutlineFireSquare = 'solar-outline-fire-square';
     case OutlineFish = 'solar-outline-fish';
+    case OutlineFishingRod = 'solar-outline-fishing-rod';
     case OutlineFlag = 'solar-outline-flag';
     case OutlineFlag2 = 'solar-outline-flag-2';
+    case OutlineFlagCheckered = 'solar-outline-flag-checkered';
     case OutlineFlagOff = 'solar-outline-flag-off';
     case OutlineFlame = 'solar-outline-flame';
     case OutlineFlashDrive = 'solar-outline-flash-drive';
@@ -8474,6 +8581,7 @@ enum SolarIcon: string
     case OutlineFolderZip = 'solar-outline-folder-zip';
     case OutlineFolders = 'solar-outline-folders';
     case OutlineFootball = 'solar-outline-football';
+    case OutlineFootprints = 'solar-outline-footprints';
     case OutlineForbidden = 'solar-outline-forbidden';
     case OutlineForbiddenCircle = 'solar-outline-forbidden-circle';
     case OutlineForkKnife = 'solar-outline-fork-knife';
@@ -8579,6 +8687,7 @@ enum SolarIcon: string
     case OutlineHistory = 'solar-outline-history';
     case OutlineHistory2 = 'solar-outline-history-2';
     case OutlineHistory3 = 'solar-outline-history-3';
+    case OutlineHockey = 'solar-outline-hockey';
     case OutlineHome = 'solar-outline-home';
     case OutlineHome2 = 'solar-outline-home-2';
     case OutlineHomeAdd = 'solar-outline-home-add';
@@ -8612,9 +8721,12 @@ enum SolarIcon: string
     case OutlineIntersectMinimalistic = 'solar-outline-intersect-minimalistic';
     case OutlineJarOfPills = 'solar-outline-jar-of-pills';
     case OutlineJarOfPills2 = 'solar-outline-jar-of-pills-2';
+    case OutlineJumpRope = 'solar-outline-jump-rope';
     case OutlineJusticeScale = 'solar-outline-justice-scale';
     case OutlineKanban = 'solar-outline-kanban';
     case OutlineKanbanSquare = 'solar-outline-kanban-square';
+    case OutlineKayak = 'solar-outline-kayak';
+    case OutlineKettlebell = 'solar-outline-kettlebell';
     case OutlineKey = 'solar-outline-key';
     case OutlineKeyMinimalistic = 'solar-outline-key-minimalistic';
     case OutlineKeyMinimalistic2 = 'solar-outline-key-minimalistic-2';
@@ -8897,6 +9009,7 @@ enum SolarIcon: string
     case OutlinePin = 'solar-outline-pin';
     case OutlinePinCircle = 'solar-outline-pin-circle';
     case OutlinePinList = 'solar-outline-pin-list';
+    case OutlinePingPong = 'solar-outline-ping-pong';
     case OutlinePip = 'solar-outline-pip';
     case OutlinePip2 = 'solar-outline-pip-2';
     case OutlinePipette = 'solar-outline-pipette';
@@ -9120,6 +9233,7 @@ enum SolarIcon: string
     case OutlineSkateboard = 'solar-outline-skateboard';
     case OutlineSkateboarding = 'solar-outline-skateboarding';
     case OutlineSkateboardingRound = 'solar-outline-skateboarding-round';
+    case OutlineSkiing = 'solar-outline-skiing';
     case OutlineSkipNext = 'solar-outline-skip-next';
     case OutlineSkipPrevious = 'solar-outline-skip-previous';
     case OutlineSkirt = 'solar-outline-skirt';
@@ -9172,6 +9286,8 @@ enum SolarIcon: string
     case OutlineSpeedometerLow = 'solar-outline-speedometer-low';
     case OutlineSpeedometerMax = 'solar-outline-speedometer-max';
     case OutlineSpeedometerMiddle = 'solar-outline-speedometer-middle';
+    case OutlineSportField = 'solar-outline-sport-field';
+    case OutlineSportShoe = 'solar-outline-sport-shoe';
     case OutlineSprout = 'solar-outline-sprout';
     case OutlineSquareAcademicCap = 'solar-outline-square-academic-cap';
     case OutlineSquareAcademicCap2 = 'solar-outline-square-academic-cap-2';
@@ -9261,6 +9377,7 @@ enum SolarIcon: string
     case OutlineSuspensionBolt = 'solar-outline-suspension-bolt';
     case OutlineSuspensionCross = 'solar-outline-suspension-cross';
     case OutlineSwimming = 'solar-outline-swimming';
+    case OutlineSwimmingPool = 'solar-outline-swimming-pool';
     case OutlineSyringe = 'solar-outline-syringe';
     case OutlineTShirt = 'solar-outline-t-shirt';
     case OutlineTable = 'solar-outline-table';
@@ -9280,6 +9397,7 @@ enum SolarIcon: string
     case OutlineTemperature = 'solar-outline-temperature';
     case OutlineTennis = 'solar-outline-tennis';
     case OutlineTennis2 = 'solar-outline-tennis-2';
+    case OutlineTennisRacket = 'solar-outline-tennis-racket';
     case OutlineTestTube = 'solar-outline-test-tube';
     case OutlineTestTubeMinimalistic = 'solar-outline-test-tube-minimalistic';
     case OutlineTextAlignCenter = 'solar-outline-text-align-center';
@@ -9440,6 +9558,7 @@ enum SolarIcon: string
     case OutlineWheel = 'solar-outline-wheel';
     case OutlineWheelAngle = 'solar-outline-wheel-angle';
     case OutlineWhisk = 'solar-outline-whisk';
+    case OutlineWhistle = 'solar-outline-whistle';
     case OutlineWiFi = 'solar-outline-wi-fi';
     case OutlineWiFiCog = 'solar-outline-wi-fi-cog';
     case OutlineWiFiCross = 'solar-outline-wi-fi-cross';
@@ -9468,6 +9587,7 @@ enum SolarIcon: string
     case OutlineWrench = 'solar-outline-wrench';
     case OutlineXxx = 'solar-outline-xxx';
     case OutlineYen = 'solar-outline-yen';
+    case OutlineYogaMat = 'solar-outline-yoga-mat';
 
     public function weight(): string
     {
