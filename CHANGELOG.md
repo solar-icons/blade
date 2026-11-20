@@ -4,6 +4,16 @@ All notable changes to `solar-icons/blade` will be documented in this file.
 
 ## Unreleased
 
+## v2.2.0
+
+Built from @solar-icons/static 2.7.0 (+120 added, ~9 modified, -0 removed SVG files).
+
+Expand catalogue to 1,596 icon families (9,576 SVGs):
+
+- Add 20 new `Sports` icon families across all 6 canonical styles (`Bold`, `BoldDuotone`, `Broken`, `Linear`, `LineDuotone`, `Outline`): `sport-shoe`, `footprints`, `kettlebell`, `biceps-flexed`, `jump-rope`, `yoga-mat`, `baseball`, `ping-pong`, `hockey`, `cricket`, `tennis-racket`, `skiing`, `boxing-glove`, `kayak`, `bow-arrow`, `fishing-rod`, `swimming-pool`, `whistle`, `sport-field`, and `flag-checkered`.
+
+- Fix open stroke endpoints to use round caps in 9 `tools` icons: `opacity` (Broken, Linear), `contrast` (Linear, LineDuotone), `flat-brush` (Linear, LineDuotone), `exclude` (Linear) and `subtract-minimalistic` (Linear, LineDuotone).
+
 ## v2.1.0
 
 Built from @solar-icons/static 2.6.0 (+354 added, ~306 modified, -0 removed SVG files).
